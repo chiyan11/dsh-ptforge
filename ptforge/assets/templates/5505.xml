@@ -1,0 +1,525 @@
+<DEVICE>
+    <ENGINE>
+     <TYPE model="5505" customModel="">ASA</TYPE>
+     <NAME translate="true">ASA0</NAME>
+     <POWER>true</POWER>
+     <DESCRIPTION />
+     <MODULE>
+      <TYPE>eNonRemovableModule</TYPE>
+      <MODEL />
+      <SLOT>
+       <TYPE>eNonRemovableModule</TYPE>
+       <MODULE>
+        <TYPE>eNonRemovableModule</TYPE>
+        <MODEL />
+        <SLOT>
+         <TYPE>eASAModule</TYPE>
+         <MODULE>
+          <TYPE>eASAModule</TYPE>
+          <MODEL>ASA-Cover</MODEL>
+         </MODULE>
+        </SLOT>
+        <PORT>
+         <TYPE>eCopperEthernet</TYPE>
+         <POWER>true</POWER>
+         <MEDIATYPE>0</MEDIATYPE>
+         <PINS>true</PINS>
+         <BANDWIDTH>10000</BANDWIDTH>
+         <FULLDUPLEX>true</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>true</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>true</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0060.47B2.1701</MACADDRESS>
+         <BIA>0060.47B2.1701</BIA>
+         <CLOCKRATE>2000000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <CHANNEL5GHZ>0</CHANNEL5GHZ>
+         <COVERAGERANGE>0</COVERAGERANGE>
+         <SAVED_FULLDUPLEX>false</SAVED_FULLDUPLEX>
+        </PORT>
+        <PORT>
+         <TYPE>eCopperEthernet</TYPE>
+         <POWER>true</POWER>
+         <MEDIATYPE>0</MEDIATYPE>
+         <PINS>true</PINS>
+         <BANDWIDTH>10000</BANDWIDTH>
+         <FULLDUPLEX>true</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>true</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>true</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0060.47B2.1702</MACADDRESS>
+         <BIA>0060.47B2.1702</BIA>
+         <CLOCKRATE>2000000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <CHANNEL5GHZ>0</CHANNEL5GHZ>
+         <COVERAGERANGE>0</COVERAGERANGE>
+         <SAVED_FULLDUPLEX>false</SAVED_FULLDUPLEX>
+        </PORT>
+        <PORT>
+         <TYPE>eCopperEthernet</TYPE>
+         <POWER>true</POWER>
+         <MEDIATYPE>0</MEDIATYPE>
+         <PINS>true</PINS>
+         <BANDWIDTH>10000</BANDWIDTH>
+         <FULLDUPLEX>true</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>true</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>true</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0060.47B2.1703</MACADDRESS>
+         <BIA>0060.47B2.1703</BIA>
+         <CLOCKRATE>2000000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <CHANNEL5GHZ>0</CHANNEL5GHZ>
+         <COVERAGERANGE>0</COVERAGERANGE>
+         <SAVED_FULLDUPLEX>false</SAVED_FULLDUPLEX>
+        </PORT>
+        <PORT>
+         <TYPE>eCopperEthernet</TYPE>
+         <POWER>true</POWER>
+         <MEDIATYPE>0</MEDIATYPE>
+         <PINS>true</PINS>
+         <BANDWIDTH>10000</BANDWIDTH>
+         <FULLDUPLEX>false</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>true</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>true</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0060.47B2.1704</MACADDRESS>
+         <BIA>0060.47B2.1704</BIA>
+         <CLOCKRATE>2000000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <CHANNEL5GHZ>0</CHANNEL5GHZ>
+         <COVERAGERANGE>0</COVERAGERANGE>
+         <SAVED_FULLDUPLEX>false</SAVED_FULLDUPLEX>
+        </PORT>
+        <PORT>
+         <TYPE>eCopperEthernet</TYPE>
+         <POWER>true</POWER>
+         <MEDIATYPE>0</MEDIATYPE>
+         <PINS>true</PINS>
+         <BANDWIDTH>10000</BANDWIDTH>
+         <FULLDUPLEX>false</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>true</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>true</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0060.47B2.1705</MACADDRESS>
+         <BIA>0060.47B2.1705</BIA>
+         <CLOCKRATE>2000000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <CHANNEL5GHZ>0</CHANNEL5GHZ>
+         <COVERAGERANGE>0</COVERAGERANGE>
+         <SAVED_FULLDUPLEX>false</SAVED_FULLDUPLEX>
+        </PORT>
+        <PORT>
+         <TYPE>eCopperEthernet</TYPE>
+         <POWER>true</POWER>
+         <MEDIATYPE>0</MEDIATYPE>
+         <PINS>true</PINS>
+         <BANDWIDTH>10000</BANDWIDTH>
+         <FULLDUPLEX>false</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>true</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>true</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0060.47B2.1706</MACADDRESS>
+         <BIA>0060.47B2.1706</BIA>
+         <CLOCKRATE>2000000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <CHANNEL5GHZ>0</CHANNEL5GHZ>
+         <COVERAGERANGE>0</COVERAGERANGE>
+         <SAVED_FULLDUPLEX>false</SAVED_FULLDUPLEX>
+        </PORT>
+        <PORT>
+         <TYPE>eCopperEthernet</TYPE>
+         <POWER>true</POWER>
+         <MEDIATYPE>0</MEDIATYPE>
+         <PINS>true</PINS>
+         <BANDWIDTH>10000</BANDWIDTH>
+         <FULLDUPLEX>false</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>true</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>true</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0060.47B2.1707</MACADDRESS>
+         <BIA>0060.47B2.1707</BIA>
+         <CLOCKRATE>2000000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <CHANNEL5GHZ>0</CHANNEL5GHZ>
+         <COVERAGERANGE>0</COVERAGERANGE>
+         <SAVED_FULLDUPLEX>false</SAVED_FULLDUPLEX>
+        </PORT>
+        <PORT>
+         <TYPE>eCopperEthernet</TYPE>
+         <POWER>true</POWER>
+         <MEDIATYPE>0</MEDIATYPE>
+         <PINS>true</PINS>
+         <BANDWIDTH>10000</BANDWIDTH>
+         <FULLDUPLEX>false</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>true</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>true</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0060.47B2.1708</MACADDRESS>
+         <BIA>0060.47B2.1708</BIA>
+         <CLOCKRATE>2000000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <CHANNEL5GHZ>0</CHANNEL5GHZ>
+         <COVERAGERANGE>0</COVERAGERANGE>
+         <SAVED_FULLDUPLEX>false</SAVED_FULLDUPLEX>
+        </PORT>
+       </MODULE>
+      </SLOT>
+     </MODULE>
+     <CUSTOM_VARS>AAAAAA==</CUSTOM_VARS>
+     <CUSTOM_INTERFACE />
+     <SYS_CONTACT />
+     <SYS_LOCATION />
+     <COORD_SETTINGS>
+      <X_COORD>1222.42</X_COORD>
+      <Y_COORD>1222.51</Y_COORD>
+      <Z_COORD>0</Z_COORD>
+     </COORD_SETTINGS>
+     <SERIALNUMBER>JMX1536C6H5</SERIALNUMBER>
+     <EXT_ATTRIBUTES>MTBF:300000;cost:5750;power source:1;rack units:2;wattage:5;</EXT_ATTRIBUTES>
+     <USB_PORT_COUNT>0</USB_PORT_COUNT>
+     <TEMPLATE_CREATION_TIME>0</TEMPLATE_CREATION_TIME>
+     <USER_APPS>
+      <RUNNING_APPS />
+      <DESKTOP_APPS />
+     </USER_APPS>
+     <SYS_NAME>ciscoasa</SYS_NAME>
+     <RUNNINGCONFIG>
+      <LINE>: Saved</LINE>
+      <LINE>:</LINE>
+      <LINE>ASA Version 8.4(2)</LINE>
+      <LINE>!</LINE>
+      <LINE>hostname ciscoasa</LINE>
+      <LINE>names</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/0</LINE>
+      <LINE> switchport access vlan 2</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/1</LINE>
+      <LINE> switchport access vlan 1</LINE>
+      <LINE> switchport mode trunk</LINE>
+      <LINE> switchport trunk allowed vlan 1,10</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/2</LINE>
+      <LINE> switchport access vlan 3</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/3</LINE>
+      <LINE> switchport access vlan 1</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/4</LINE>
+      <LINE> switchport access vlan 1</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/5</LINE>
+      <LINE> switchport access vlan 1</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/6</LINE>
+      <LINE> switchport access vlan 1</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/7</LINE>
+      <LINE> switchport access vlan 1</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Vlan1</LINE>
+      <LINE> nameif inside</LINE>
+      <LINE> security-level 100</LINE>
+      <LINE> ip address 192.168.1.1 255.255.255.0</LINE>
+      <LINE> ipv6 address 1920:1::1/80</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Vlan2</LINE>
+      <LINE> nameif outside</LINE>
+      <LINE> security-level 0</LINE>
+      <LINE> ip address 209.165.200.226 255.255.255.248</LINE>
+      <LINE> ipv6 address 2090::226/64</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Vlan3</LINE>
+      <LINE> nameif dmz</LINE>
+      <LINE> security-level 70</LINE>
+      <LINE> ip address 192.168.2.1 255.255.255.0</LINE>
+      <LINE> ipv6 address 1920:2::1/80</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Vlan10</LINE>
+      <LINE> nameif inside10</LINE>
+      <LINE> security-level 100</LINE>
+      <LINE> ip address 192.168.10.1 255.255.255.0</LINE>
+      <LINE> ipv6 address 1920:10::1/80</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>ipv6 route outside ::/0 2090::225</LINE>
+      <LINE>route outside 0.0.0.0 0.0.0.0 209.165.200.225 1</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>class-map testMap</LINE>
+      <LINE> match any</LINE>
+      <LINE>!</LINE>
+      <LINE>policy-map testPolicy</LINE>
+      <LINE> class testMap</LINE>
+      <LINE>  inspect icmp </LINE>
+      <LINE>!</LINE>
+      <LINE>service-policy testPolicy global</LINE>
+      <LINE>!</LINE>
+      <LINE>telnet timeout 5</LINE>
+      <LINE>ssh timeout 5</LINE>
+      <LINE>!</LINE>
+      <LINE>dhcpd auto_config outside</LINE>
+      <LINE>!</LINE>
+      <LINE>dhcpd address 192.168.1.5-192.168.1.34 inside</LINE>
+      <LINE>dhcpd enable inside</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+     </RUNNINGCONFIG>
+     <STARTUPCONFIG>
+      <LINE>: Saved</LINE>
+      <LINE>: Written by enable_15 at 00:00:00 UTC Mar 1 1993</LINE>
+      <LINE>: Call-home enabled from prompt by enable_15 at 00:00:00 UTC Mar 1 1993</LINE>
+      <LINE>: Written by enable_15 at 00:00:00 UTC Mar 1 1993</LINE>
+      <LINE>: Call-home enabled from prompt by enable_15 at 00:00:00 UTC Mar 1 1993</LINE>
+      <LINE>: Written by enable_15 at 00:00:00 UTC Mar 1 1993</LINE>
+      <LINE>: Call-home enabled from prompt by enable_15 at 00:00:00 UTC Mar 1 1993</LINE>
+      <LINE>: Written by enable_15 at 00:00:09 UTC Mar 1 1993</LINE>
+      <LINE>: Call-home enabled from prompt by enable_15 at 00:00:09 UTC Mar 1 1993</LINE>
+      <LINE>:</LINE>
+      <LINE>ASA Version 8.4(2)</LINE>
+      <LINE>!</LINE>
+      <LINE>hostname ciscoasa</LINE>
+      <LINE>names</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/0</LINE>
+      <LINE> switchport access vlan 2</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/1</LINE>
+      <LINE> switchport access vlan 1</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/2</LINE>
+      <LINE> switchport access vlan 3</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/3</LINE>
+      <LINE> switchport access vlan 1</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/4</LINE>
+      <LINE> switchport access vlan 1</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/5</LINE>
+      <LINE> switchport access vlan 1</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/6</LINE>
+      <LINE> switchport access vlan 1</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Ethernet0/7</LINE>
+      <LINE> switchport access vlan 1</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Vlan1</LINE>
+      <LINE> nameif inside</LINE>
+      <LINE> security-level 100</LINE>
+      <LINE> ip address 192.168.1.1 255.255.255.0</LINE>
+      <LINE> ipv6 address 1920:1::1/80</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Vlan2</LINE>
+      <LINE> nameif outside</LINE>
+      <LINE> security-level 0</LINE>
+      <LINE> ip address 209.165.200.226 255.255.255.248</LINE>
+      <LINE> ipv6 address 2090::226/64</LINE>
+      <LINE>!</LINE>
+      <LINE>interface Vlan3</LINE>
+      <LINE> no forward interface Vlan1</LINE>
+      <LINE> nameif dmz</LINE>
+      <LINE> security-level 70</LINE>
+      <LINE> ip address 192.168.2.1 255.255.255.0</LINE>
+      <LINE> ipv6 address 1920:2::1/80</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>ipv6 route outside ::/0 2090::225</LINE>
+      <LINE>route outside 0.0.0.0 0.0.0.0 209.165.200.225 1</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>telnet timeout 5</LINE>
+      <LINE>ssh timeout 5</LINE>
+      <LINE>!</LINE>
+      <LINE>dhcpd address 192.168.1.5-192.168.1.34 inside</LINE>
+      <LINE>dhcpd enable inside</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+      <LINE>!</LINE>
+     </STARTUPCONFIG>
+     <CURRENT_COMMAND_SET>5505_8.4</CURRENT_COMMAND_SET>
+     <FILE_MANAGER>
+      <FILE class="CDirectory">
+       <FILE_NUMBER>0</FILE_NUMBER>
+       <NAME />
+       <DATE_TIME>0</DATE_TIME>
+       <PERMISSION>6</PERMISSION>
+       <FILE_CONTENT />
+       <FILES>
+        <FILE class="CFileSystem">
+         <FILE_NUMBER>0</FILE_NUMBER>
+         <NAME>flash:</NAME>
+         <DATE_TIME>0</DATE_TIME>
+         <PERMISSION>6</PERMISSION>
+         <FILE_CONTENT />
+         <FILES>
+          <FILE class="CFile">
+           <FILE_NUMBER>1</FILE_NUMBER>
+           <NAME>asa842-k8.bin</NAME>
+           <DATE_TIME>0</DATE_TIME>
+           <PERMISSION>6</PERMISSION>
+           <FILE_CONTENT class="CASAFileContent">
+            <DEVICE_TYPE>ASA</DEVICE_TYPE>
+            <SET_NAME>5505_8.4</SET_NAME>
+           </FILE_CONTENT>
+          </FILE>
+         </FILES>
+         <FILE_COUNTER>1</FILE_COUNTER>
+         <CAPACITY>128573440</CAPACITY>
+        </FILE>
+       </FILES>
+      </FILE>
+     </FILE_MANAGER>
+     <CONFIG_REGISTER>1</CONFIG_REGISTER>
+     <NEXT_CONFIG_REGISTER>1</NEXT_CONFIG_REGISTER>
+     <CONFIG_BOOT_FILES />
+     <BUILD_IN_ADDR>0000.0C0B.2331</BUILD_IN_ADDR>
+     <BIOS_VERSION />
+     <SECURITY>
+      <KEY_NAME>&lt;Default-RSA-Key&gt;</KEY_NAME>
+      <TEMP_KEY_NAME>&lt;Default-RSA-Key&gt;.server</TEMP_KEY_NAME>
+      <RSA_KEY> 0000519e  000046dc  00003aa5  000001b1  00002e84  00002699  00007562  00000bdb
+ 00000824  00003ba0  000031d8  0000401b  000019be  00003a02  00006260  00005bb7
+ 00002e91  000076d2  00002354  000076ee  000075f1  00003be4  00004fc6  16dc</RSA_KEY>
+      <TEMP_RSA_KEY> 00005d9a  000008d5  00004e72  0000169d  00006644  0000654b  00002af2  00002bb5
+ 00002677  0000287e  00004f31  000009af  00006fa1  000059f8  00007122  00006905
+ 00004966  00000f99  000008b2  00007540  00003737  00006cdd  000061fb  6660</TEMP_RSA_KEY>
+      <TIME_DATE>0:0:9 UTC Mar 1 1993</TIME_DATE>
+      <ENABLED>1</ENABLED>
+      <MODULUS_BITS>1024</MODULUS_BITS>
+     </SECURITY>
+     <ALGORITHM_SETTINGS>
+      <USE_GLOBAL>true</USE_GLOBAL>
+      <CBAC_HALF_OPEN_SESSION_MULTIPLIER>1</CBAC_HALF_OPEN_SESSION_MULTIPLIER>
+      <TCP_MAX_CONNECTING_SESSIONS>100</TCP_MAX_CONNECTING_SESSIONS>
+      <TCP_MAX_OPENED_SESSIONS>1000</TCP_MAX_OPENED_SESSIONS>
+      <INTERFACE_QUEUE_SIZE>10</INTERFACE_QUEUE_SIZE>
+      <STORM_CONTROL_MULTIPLIER>10</STORM_CONTROL_MULTIPLIER>
+      <TCP_MAX_RETRANSMISSION_TIMEOUT>1000</TCP_MAX_RETRANSMISSION_TIMEOUT>
+     </ALGORITHM_SETTINGS>
+     <VLANS>
+      <VLAN name="inside" number="1" rspan="0" />
+      <VLAN name="outside" number="2" rspan="0" />
+      <VLAN name="dmz" number="3" rspan="0" />
+      <VLAN name="inside10" number="10" rspan="0" />
+     </VLANS>
+     <VTP>
+      <DOMAIN_NAME />
+      <MODE>0</MODE>
+      <VERSION>1</VERSION>
+      <PASSWORD />
+      <CONFIG_REVISION>0</CONFIG_REVISION>
+      <UPDATER_IP>0.0.0.0</UPDATER_IP>
+      <UPDATE_TIMESTAMP>0-0-00 00:00:00</UPDATE_TIMESTAMP>
+     </VTP>
+     <DHCP_SERVERS>
+      <ASSOCIATED_PORTS>
+       <ASSOCIATED_PORT>
+        <NAME>Vlan1</NAME>
+        <DHCP_SERVER>
+         <ENABLED>1</ENABLED>
+         <POOLS>
+          <POOL>
+           <NAME>serverPool</NAME>
+           <NETWORK>192.168.1.0</NETWORK>
+           <MASK>255.255.255.0</MASK>
+           <DEFAULT_ROUTER>0.0.0.0</DEFAULT_ROUTER>
+           <TFTP_ADDRESS>0.0.0.0</TFTP_ADDRESS>
+           <START_IP>192.168.1.5</START_IP>
+           <END_IP>192.168.1.34</END_IP>
+           <DNS_SERVER>0.0.0.0</DNS_SERVER>
+           <MAX_USERS>30</MAX_USERS>
+           <DOMAIN_NAME />
+           <DHCP_POOL_LEASES />
+           <LEASE_TIME>3600000</LEASE_TIME>
+           <WLC_ADDRESS>0.0.0.0</WLC_ADDRESS>
+          </POOL>
+         </POOLS>
+         <DHCP_RESERVATIONS />
+         <AUTOCONFIG />
+        </DHCP_SERVER>
+       </ASSOCIATED_PORT>
+       <ASSOCIATED_PORT>
+        <NAME>Vlan2</NAME>
+        <DHCP_SERVER>
+         <ENABLED>0</ENABLED>
+         <POOLS>
+          <POOL>
+           <NAME>serverPool</NAME>
+           <NETWORK>0.0.0.0</NETWORK>
+           <MASK>0.0.0.0</MASK>
+           <DEFAULT_ROUTER>209.165.200.226</DEFAULT_ROUTER>
+           <TFTP_ADDRESS>0.0.0.0</TFTP_ADDRESS>
+           <START_IP>0.0.0.0</START_IP>
+           <END_IP>0.0.0.0</END_IP>
+           <DNS_SERVER>0.0.0.0</DNS_SERVER>
+           <MAX_USERS>0</MAX_USERS>
+           <DOMAIN_NAME />
+           <DHCP_POOL_LEASES />
+           <LEASE_TIME>3600000</LEASE_TIME>
+           <WLC_ADDRESS>0.0.0.0</WLC_ADDRESS>
+          </POOL>
+         </POOLS>
+         <DHCP_RESERVATIONS />
+         <AUTOCONFIG>outside</AUTOCONFIG>
+        </DHCP_SERVER>
+       </ASSOCIATED_PORT>
+      </ASSOCIATED_PORTS>
+     </DHCP_SERVERS>
+     <BOOKMARKS />
+     <KEYACTIVATION>1321CF73FCB68F7E801111DCB554E4A40F3E008D</KEYACTIVATION>
+     <CRYPTOCHECKSUM>4d7d1cd4 1d5057a0 5ef47f6e 5cb904ed</CRYPTOCHECKSUM>
+     <LICENSETYPE>1</LICENSETYPE>
+     <ACTIVATEDNEWKEY>0</ACTIVATEDNEWKEY>
+     <NEWACTIVATIONKEY />
+     <NEWLICENSETYPE>0</NEWLICENSETYPE>
+    </ENGINE>
+    <WORKSPACE>
+     <LOGICAL>
+      <X>385</X>
+      <Y>217</Y>
+      <DEVCLUSTERID>1-1</DEVCLUSTERID>
+      <CUSTOM_IMAGE_LOGICAL />
+      <CUSTOM_IMAGE_PHYSICAL />
+      <MEM_ADDR>1912117552</MEM_ADDR>
+      <DEV_ADDR>1271673784</DEV_ADDR>
+     </LOGICAL>
+     <PHYSICAL translate="true">{bfbc6719-815d-4e15-af32-85d1e5bc12b7},{1a44342d-90e7-44df-9087-c991badea677},{2b0e7c03-e7b7-4d47-9be9-a6c0a42051c8},{2cd7cac8-fd8b-4fdf-8c70-d0645d4bc9a7},{df61fb16-b9d9-4afb-b624-260039904e7e},{af5e9453-c809-4a4b-8e2f-da7f2fd27de3}</PHYSICAL>
+     <PHYSICAL_CPUR>
+      <X_PN>0.10075</X_PN>
+      <Y_PN>0.06725</Y_PN>
+      <X>29</X>
+      <Y>0</Y>
+      <PARENT_PATH>{bfbc6719-815d-4e15-af32-85d1e5bc12b7},{1a44342d-90e7-44df-9087-c991badea677},{2b0e7c03-e7b7-4d47-9be9-a6c0a42051c8},{2cd7cac8-fd8b-4fdf-8c70-d0645d4bc9a7}</PARENT_PATH>
+     </PHYSICAL_CPUR>
+    </WORKSPACE>
+   </DEVICE>
+   

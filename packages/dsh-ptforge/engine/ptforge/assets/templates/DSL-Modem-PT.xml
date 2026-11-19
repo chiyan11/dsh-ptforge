@@ -1,0 +1,102 @@
+<DEVICE>
+    <ENGINE>
+     <TYPE model="DSL-Modem-PT" customModel="">DslModem</TYPE>
+     <NAME translate="true">DSL Modem0</NAME>
+     <POWER>true</POWER>
+     <DESCRIPTION />
+     <MODULE>
+      <TYPE>eNonRemovableModule</TYPE>
+      <MODEL />
+      <SLOT>
+       <TYPE>eNonRemovableModule</TYPE>
+       <MODULE>
+        <TYPE>eNonRemovableModule</TYPE>
+        <MODEL />
+        <PORT>
+         <TYPE>eModem</TYPE>
+         <POWER>true</POWER>
+         <MEDIATYPE>0</MEDIATYPE>
+         <PINS>true</PINS>
+         <BANDWIDTH>56</BANDWIDTH>
+         <FULLDUPLEX>true</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>false</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>false</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>00E0.A34D.9044</MACADDRESS>
+         <BIA>00E0.A34D.9044</BIA>
+         <CLOCKRATE>0</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <CHANNEL5GHZ>0</CHANNEL5GHZ>
+         <COVERAGERANGE>0</COVERAGERANGE>
+         <SAVED_FULLDUPLEX>false</SAVED_FULLDUPLEX>
+        </PORT>
+       </MODULE>
+      </SLOT>
+      <SLOT>
+       <TYPE>ePtModemModule</TYPE>
+       <MODULE>
+        <TYPE>ePtModemModule</TYPE>
+        <MODEL>PT-MODEM-NM-1CFE</MODEL>
+        <PORT>
+         <TYPE>eCopperFastEthernet</TYPE>
+         <POWER>true</POWER>
+         <MEDIATYPE>0</MEDIATYPE>
+         <PINS>true</PINS>
+         <BANDWIDTH>100000</BANDWIDTH>
+         <FULLDUPLEX>false</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>false</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>false</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0006.2A68.47B5</MACADDRESS>
+         <BIA>0006.2A68.47B5</BIA>
+         <CLOCKRATE>0</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <CHANNEL5GHZ>0</CHANNEL5GHZ>
+         <COVERAGERANGE>0</COVERAGERANGE>
+         <SAVED_FULLDUPLEX>false</SAVED_FULLDUPLEX>
+        </PORT>
+       </MODULE>
+      </SLOT>
+     </MODULE>
+     <CUSTOM_VARS>AAAAAA==</CUSTOM_VARS>
+     <CUSTOM_INTERFACE />
+     <SYS_CONTACT />
+     <SYS_LOCATION />
+     <COORD_SETTINGS>
+      <X_COORD>17.8041</X_COORD>
+      <Y_COORD>585.887</Y_COORD>
+      <Z_COORD>0</Z_COORD>
+     </COORD_SETTINGS>
+     <SERIALNUMBER>PTT0810SKMC</SERIALNUMBER>
+     <EXT_ATTRIBUTES>MTBF:300000;cost:0;power source:0;rack units:1;wattage:10;</EXT_ATTRIBUTES>
+     <USB_PORT_COUNT>0</USB_PORT_COUNT>
+     <TEMPLATE_CREATION_TIME>0</TEMPLATE_CREATION_TIME>
+     <USER_APPS>
+      <RUNNING_APPS />
+      <DESKTOP_APPS />
+     </USER_APPS>
+     <SAVE_REF_ID>save-ref-id:9877618593472118666</SAVE_REF_ID>
+    </ENGINE>
+    <WORKSPACE>
+     <LOGICAL>
+      <X>174.5</X>
+      <Y>293</Y>
+      <DEVCLUSTERID>1-1</DEVCLUSTERID>
+      <CUSTOM_IMAGE_LOGICAL />
+      <CUSTOM_IMAGE_PHYSICAL />
+      <MEM_ADDR>1580483872</MEM_ADDR>
+      <DEV_ADDR>1229840784</DEV_ADDR>
+     </LOGICAL>
+     <PHYSICAL translate="true">{a6d0bfce-5029-4709-865f-79cc7cbece3f},{33a5faad-8c54-41d0-a0fc-2c22a22ce994},{93d2e2ea-8da6-4ba2-8c0e-4209ed569956},{409f6cb0-6aaa-42b5-aa94-5a3fc8cf997a},{425d6bc5-3026-4d6d-b41b-de00d85c4245},{eac391c3-16d8-4ebc-a86a-130a168076f2}</PHYSICAL>
+     <PHYSICAL_CPUR>
+      <X_PN>0.0555</X_PN>
+      <Y_PN>0.08375</Y_PN>
+      <X>0</X>
+      <Y>0</Y>
+      <PARENT_PATH>{a6d0bfce-5029-4709-865f-79cc7cbece3f},{33a5faad-8c54-41d0-a0fc-2c22a22ce994},{93d2e2ea-8da6-4ba2-8c0e-4209ed569956},{409f6cb0-6aaa-42b5-aa94-5a3fc8cf997a}</PARENT_PATH>
+     </PHYSICAL_CPUR>
+    </WORKSPACE>
+   </DEVICE>
+   

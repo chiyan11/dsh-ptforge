@@ -1,0 +1,533 @@
+<DEVICE>
+    <ENGINE>
+     <TYPE model="Carbon Dioxide Detector" customModel="Carbon Dioxide Detector">MCUComponent</TYPE>
+     <NAME translate="true">IoT0</NAME>
+     <POWER>true</POWER>
+     <DESCRIPTION />
+     <MODULE>
+      <TYPE>eNonRemovableModule</TYPE>
+      <MODEL />
+      <SLOT>
+       <TYPE>ePtIoeNetworkModule</TYPE>
+       <MODULE>
+        <TYPE>ePtIoeNetworkModule</TYPE>
+        <MODEL>PT-IOT-NM-1CFE</MODEL>
+        <PORT>
+         <TYPE>eCopperFastEthernet</TYPE>
+         <POWER>true</POWER>
+         <MEDIATYPE>0</MEDIATYPE>
+         <PINS>false</PINS>
+         <BANDWIDTH>100000</BANDWIDTH>
+         <FULLDUPLEX>true</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>true</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>true</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0060.707B.D994</MACADDRESS>
+         <BIA>0060.707B.D994</BIA>
+         <CLOCKRATE>2000000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <CHANNEL5GHZ>0</CHANNEL5GHZ>
+         <COVERAGERANGE>0</COVERAGERANGE>
+         <SAVED_FULLDUPLEX>false</SAVED_FULLDUPLEX>
+         <IP>1.1.1.3</IP>
+         <SUBNET>255.0.0.0</SUBNET>
+         <PORT_GATEWAY />
+         <PORT_DNS />
+         <PORT_DHCP_ENABLE>false</PORT_DHCP_ENABLE>
+         <ND_SUPPRESSED>false</ND_SUPPRESSED>
+         <TIMEOUT>14400000</TIMEOUT>
+         <PC_FIREWALL>false</PC_FIREWALL>
+         <PC_IPV6_FIREWALL>false</PC_IPV6_FIREWALL>
+         <IPV6_ENABLED>true</IPV6_ENABLED>
+         <IPV6_ADDRESS_AUTOCONFIG>false</IPV6_ADDRESS_AUTOCONFIG>
+         <IPV6_PORT_GATEWAY />
+         <IPV6_PORT_DNS />
+         <IPV6_LINK_LOCAL>FE80::260:70FF:FE7B:D994</IPV6_LINK_LOCAL>
+         <IPV6_DEFAULT_LINK_LOCAL>FE80::260:70FF:FE7B:D994</IPV6_DEFAULT_LINK_LOCAL>
+         <IPV6_PORT_DHCP_ENABLED>false</IPV6_PORT_DHCP_ENABLED>
+         <IPV6_ADDRESSES />
+         <IP_UNNUMBERED />
+        </PORT>
+       </MODULE>
+      </SLOT>
+      <SLOT>
+       <TYPE>eNonRemovableModule</TYPE>
+       <MODULE>
+        <TYPE>eNonRemovableModule</TYPE>
+        <MODEL />
+        <SLOT>
+         <TYPE>ePtIoeDigitalModule</TYPE>
+        </SLOT>
+        <SLOT>
+         <TYPE>ePtIoeDigitalModule</TYPE>
+        </SLOT>
+        <SLOT>
+         <TYPE>ePtIoeDigitalModule</TYPE>
+        </SLOT>
+        <SLOT>
+         <TYPE>ePtIoeDigitalModule</TYPE>
+        </SLOT>
+        <SLOT>
+         <TYPE>ePtIoeDigitalModule</TYPE>
+        </SLOT>
+        <SLOT>
+         <TYPE>ePtIoeDigitalModule</TYPE>
+        </SLOT>
+        <SLOT>
+         <TYPE>ePtIoeAnalogModule</TYPE>
+        </SLOT>
+        <SLOT>
+         <TYPE>ePtIoeAnalogModule</TYPE>
+        </SLOT>
+        <SLOT>
+         <TYPE>ePtIoeAnalogModule</TYPE>
+        </SLOT>
+        <SLOT>
+         <TYPE>ePtIoeAnalogModule</TYPE>
+        </SLOT>
+       </MODULE>
+      </SLOT>
+      <SLOT>
+       <TYPE>ePtIoeMcuComponentPowerAdapter</TYPE>
+       <MODULE>
+        <TYPE>ePtIoeMcuComponentPowerAdapter</TYPE>
+        <MODEL>PT-UNV-PWR-ADAPTER</MODEL>
+       </MODULE>
+      </SLOT>
+      <SLOT>
+       <TYPE>ePtIoeNetworkModule</TYPE>
+      </SLOT>
+     </MODULE>
+     <CUSTOM_VARS>AAAAAgAAAAoAcwB0AGEAdABlAAAACgAAAAACADAAAAAKAGwAZQB2AGUAbAAAAAoAAAAAJAAxADAALgA2ADMAMAAwADAAMAAxADEANAA0ADQAMAA5ADEAOA==</CUSTOM_VARS>
+     <CUSTOM_INTERFACE />
+     <SYS_CONTACT />
+     <SYS_LOCATION />
+     <COORD_SETTINGS>
+      <X_COORD>1239.49</X_COORD>
+      <Y_COORD>1232.1</Y_COORD>
+      <Z_COORD>0</Z_COORD>
+     </COORD_SETTINGS>
+     <SERIALNUMBER>PTT0810WLT4</SERIALNUMBER>
+     <EXT_ATTRIBUTES>MTBF:43800;cost:500;power source:0;rack units:1;wattage:10;</EXT_ATTRIBUTES>
+     <USB_PORT_COUNT>0</USB_PORT_COUNT>
+     <TEMPLATE_CREATION_TIME>1499475763677</TEMPLATE_CREATION_TIME>
+     <USER_APPS>
+      <RUNNING_APPS>
+       <USER_APP>Carbon Dioxide Detector (JavaScript)</USER_APP>
+      </RUNNING_APPS>
+      <DESKTOP_APPS />
+     </USER_APPS>
+     <SYS_NAME />
+     <GATEWAY />
+     <DNS_CLIENT>
+      <SERVER_IP />
+      <SERVER_IPV6 />
+     </DNS_CLIENT>
+     <DHCP_CLIENT>
+      <PORT_DATA_MAP />
+     </DHCP_CLIENT>
+     <WIRELESS_CLIENT>
+      <WIRELESS_COMMON>
+       <NETWORK_MODE>7</NETWORK_MODE>
+       <SSID>HomeGateway</SSID>
+       <ENCRYPT_TYPE>0</ENCRYPT_TYPE>
+       <AUTHEN_TYPE>0</AUTHEN_TYPE>
+       <RADIO_BAND>0</RADIO_BAND>
+       <WIDE_CHANNEL>0</WIDE_CHANNEL>
+       <STANDARD_CHANNEL>0</STANDARD_CHANNEL>
+      </WIRELESS_COMMON>
+      <PROFILES>
+       <WIRELESS_PROFILE>
+        <NAME>HomeGateway</NAME>
+        <SSID>HomeGateway</SSID>
+        <NETWORK_TYPE>7</NETWORK_TYPE>
+        <RADIO_BAND>0</RADIO_BAND>
+        <AUTHEN_TYPE>0</AUTHEN_TYPE>
+        <ENCRYPT_TYPE>0</ENCRYPT_TYPE>
+        <WEP_KEY />
+        <WPA_EAP_USERID />
+        <WPA_EAP_PASSWORD />
+        <DHCP_ENABLED>1</DHCP_ENABLED>
+        <IP_ADDRESS />
+        <SUBNET_MASK />
+        <DEFAULT_GATEWAY />
+        <DNS />
+        <CHANNEL>1</CHANNEL>
+        <VLAN>1</VLAN>
+       </WIRELESS_PROFILE>
+      </PROFILES>
+      <CURRENT_PROFILE>
+       <WIRELESS_PROFILE>
+        <NAME>HomeGateway</NAME>
+        <SSID>HomeGateway</SSID>
+        <NETWORK_TYPE>7</NETWORK_TYPE>
+        <RADIO_BAND>0</RADIO_BAND>
+        <AUTHEN_TYPE>0</AUTHEN_TYPE>
+        <ENCRYPT_TYPE>0</ENCRYPT_TYPE>
+        <WEP_KEY />
+        <WPA_EAP_USERID />
+        <WPA_EAP_PASSWORD />
+        <DHCP_ENABLED>1</DHCP_ENABLED>
+        <IP_ADDRESS />
+        <SUBNET_MASK />
+        <DEFAULT_GATEWAY />
+        <DNS />
+        <CHANNEL>1</CHANNEL>
+        <VLAN>1</VLAN>
+       </WIRELESS_PROFILE>
+      </CURRENT_PROFILE>
+     </WIRELESS_CLIENT>
+     <GATEWAYV6 />
+     <DHCPV6_MAIN>
+      <PARTIAL_DUID>3B-C6-A6-22-</PARTIAL_DUID>
+      <ENABLED_PORTS />
+     </DHCPV6_MAIN>
+     <NDV6>
+      <ENABLED_HOST>
+       <PORT>FastEthernet0</PORT>
+       <ENABLED>0</ENABLED>
+      </ENABLED_HOST>
+      <ENABLED_ROUTER>0</ENABLED_ROUTER>
+      <SERVER_ROUTER_PORT_DATA_HEAD />
+     </NDV6>
+     <FILE_MANAGER>
+      <FILE class="CDirectory">
+       <FILE_NUMBER>0</FILE_NUMBER>
+       <NAME />
+       <DATE_TIME>0</DATE_TIME>
+       <PERMISSION>6</PERMISSION>
+       <FILE_CONTENT />
+       <FILES>
+        <FILE class="CFileSystem">
+         <FILE_NUMBER>0</FILE_NUMBER>
+         <NAME>Dev:</NAME>
+         <DATE_TIME>0</DATE_TIME>
+         <PERMISSION>6</PERMISSION>
+         <FILE_CONTENT />
+         <FILES>
+          <FILE class="CDirectory">
+           <FILE_NUMBER>1</FILE_NUMBER>
+           <NAME>Carbon Dioxide Detector (JavaScript)</NAME>
+           <DATE_TIME>0</DATE_TIME>
+           <PERMISSION>6</PERMISSION>
+           <FILE_CONTENT />
+           <FILES>
+            <FILE class="CFile">
+             <FILE_NUMBER>2</FILE_NUMBER>
+             <NAME>main.js</NAME>
+             <DATE_TIME>0</DATE_TIME>
+             <PERMISSION>6</PERMISSION>
+             <FILE_CONTENT class="CTextFileContent">
+              <TEXT>var ALARM_LEVEL = 60;
+var ENVIRONMENT_NAME = "CO2";
+
+var state = 0;
+var level = 0;
+
+function setup() {
+	
+	IoEClient.setup({
+		type: "Carbon Dixoide Detector",
+		states: [{
+			name: "Alarm",
+			type: "bool",
+			controllable: false
+		},
+		{
+			name: "Level",
+			type: "number",
+			controllable: false
+		}]
+	});
+	
+	state = restoreProperty("state", 0);
+	setState(state);
+	sendReport();
+}
+
+function restoreProperty(propertyName, defaultValue)
+{
+	var value = getDeviceProperty(getName(), propertyName);
+	if ( !(value === "" || value == "undefined") ){
+		if ( typeof(defaultValue) == "number" )
+			value = Number(value);
+		
+		setDeviceProperty(getName(), propertyName, value);
+		return value;
+	}
+	
+	return defaultValue;
+}
+
+function loop() {
+	detect();
+	delay(1000);
+}
+
+function detect()
+{
+	var value = Environment.get(ENVIRONMENT_NAME);
+	if (value &gt;= 0 )
+		setLevel( Environment.get(ENVIRONMENT_NAME));
+}
+
+function sendReport()
+{
+	var report = state +","+level;	// comma seperated states
+	IoEClient.reportStates(report);
+	setDeviceProperty(getName(), "state", state);
+	setDeviceProperty(getName(), "level", level);
+}
+
+function setState(newState)
+{
+	if ( newState === 0 )
+		digitalWrite(1, LOW);
+	else
+		digitalWrite(1, HIGH);
+	
+	state = newState;
+	
+	sendReport();
+}
+
+function setLevel(newLevel)
+{
+	if  (level == newLevel)
+		return;
+		
+	level = newLevel;
+	if ( level &gt; ALARM_LEVEL)
+		setState(1);
+	else
+		setState(0);
+	
+	sendReport();
+	
+}
+</TEXT>
+             </FILE_CONTENT>
+            </FILE>
+           </FILES>
+          </FILE>
+          <FILE class="CDirectory">
+           <FILE_NUMBER>3</FILE_NUMBER>
+           <NAME>Carbon Dioxide Detector (Python)</NAME>
+           <DATE_TIME>0</DATE_TIME>
+           <PERMISSION>6</PERMISSION>
+           <FILE_CONTENT />
+           <FILES>
+            <FILE class="CFile">
+             <FILE_NUMBER>4</FILE_NUMBER>
+             <NAME>main.py</NAME>
+             <DATE_TIME>0</DATE_TIME>
+             <PERMISSION>6</PERMISSION>
+             <FILE_CONTENT class="CTextFileContent">
+              <TEXT>from time import *
+from physical import *
+from gpio import *
+from environment import Environment
+from ioeclient import IoEClient
+
+ALARM_LEVEL = 60
+ENVIRONMENT_NAME = "CO2"
+
+state = 0
+level = 0
+
+def setup():
+    global state
+    IoEClient.setup({
+        "type": "Carbon Dixoide Detector",
+        "states": [{
+            "name": "Alarm",
+            "type": "bool",
+            "controllable": False
+        },
+        {
+            "name": "Level",
+            "type": "number",
+            "controllable": False
+        }]
+    })
+
+    state = restoreProperty("state", 0)
+    setState(state)
+    sendReport()
+
+
+def restoreProperty (propertyName, defaultValue):
+    value = getDeviceProperty(getName(), propertyName)
+    if  not (value == "" or value == None) :
+        if  isinstance(defaultValue, (int, float)):
+            value = int(value)
+
+
+        setDeviceProperty(getName(), propertyName, value)
+        return value
+
+
+    return defaultValue
+
+
+def loop ():
+    detect()
+    delay(1000)
+
+
+def detect ():
+    value = Environment.get(ENVIRONMENT_NAME)
+    if value &gt;= 0 :
+        setLevel( Environment.get(ENVIRONMENT_NAME))
+
+
+
+def sendReport ():
+    report = str(state) +","+str(level)    # comma seperated states
+    IoEClient.reportStates(report)
+    setDeviceProperty(getName(), "state", state)
+    setDeviceProperty(getName(), "level", level)
+
+
+def setState (newState):
+    global state
+    if  newState is 0 :
+        digitalWrite(1, LOW)
+    else:
+        digitalWrite(1, HIGH)
+
+
+    state = newState
+
+    sendReport()
+
+
+def setLevel (newLevel):
+    global level
+    if level == newLevel:
+        return
+
+
+    level = newLevel
+    if  level &gt; ALARM_LEVEL:
+        setState(1)
+    else:
+        setState(0)
+
+
+    sendReport()
+
+
+if __name__ == "__main__":
+    setup()
+    while True:
+        loop()
+        sleep(1)
+
+</TEXT>
+             </FILE_CONTENT>
+            </FILE>
+           </FILES>
+          </FILE>
+         </FILES>
+         <FILE_COUNTER>4</FILE_COUNTER>
+         <CAPACITY>100000000</CAPACITY>
+        </FILE>
+        <FILE class="CFileSystem">
+         <FILE_NUMBER>0</FILE_NUMBER>
+         <NAME>User:</NAME>
+         <DATE_TIME>0</DATE_TIME>
+         <PERMISSION>6</PERMISSION>
+         <FILE_CONTENT />
+         <FILES />
+         <FILE_COUNTER>0</FILE_COUNTER>
+         <CAPACITY>10000000</CAPACITY>
+        </FILE>
+       </FILES>
+      </FILE>
+     </FILE_MANAGER>
+     <THING_MODEL>
+      <NAME />
+      <WIDTH>71.5</WIDTH>
+      <HEIGHT>70.5</HEIGHT>
+      <ANALOG_SLOTS_COUNT>4</ANALOG_SLOTS_COUNT>
+      <DIGITAL_SLOTS_COUNT>6</DIGITAL_SLOTS_COUNT>
+      <SPECIFICATIONS>&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space; "&gt;&lt;div&gt;&lt;font class="Apple-style-span" face="'Arial Black'" size="5"&gt;Carbon Dioxide Detector&lt;br&gt;&lt;/font&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;Detects the level of the carbon dioxide&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;&lt;u&gt;Features:&lt;/u&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;Registration Server Compatible&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;Alarm will go off when it detects a Carbon Dioxide level of 60%&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;&lt;u&gt;Usage:&lt;/u&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;Use an Old Car to change the Carbon Dioxide level&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;&lt;u&gt;Direct Control:&lt;/u&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span class="Apple-style-span" style="font-family: Arial; font-size: x-large; "&gt;N/A&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;&lt;u&gt;Local Control:&lt;/u&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;N/A&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;&lt;u&gt;Remote Control:&lt;/u&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span class="Apple-style-span" style="font-family: Arial; font-size: x-large; "&gt;N/A&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;&lt;span class="Apple-style-span" style="font-family: Arial; font-size: x-large; "&gt;&lt;u&gt;Data Specifications:&lt;/u&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span class="Apple-style-span" style="font-family: Arial; font-size: x-large; "&gt;Message Format: [state],[level]&lt;/span&gt;&lt;/div&gt;&lt;blockquote class="webkit-indent-blockquote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 40px; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; "&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;state: 0 = alarm off, 1 = alarm on&lt;/font&gt;&lt;/blockquote&gt;&lt;blockquote class="webkit-indent-blockquote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 40px; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; "&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;level: a positive number&lt;/font&gt;&lt;/blockquote&gt;&lt;blockquote class="webkit-indent-blockquote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 40px; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; "&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;&lt;br&gt;&lt;/font&gt;&lt;/blockquote&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;&lt;u&gt;Example:&lt;/u&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font class="Apple-style-span" face="Arial" size="5"&gt;Start an Old Car to increase the Carbon Dioxide level,&amp;nbsp;&lt;/font&gt;&lt;span class="Apple-style-span" style="font-family: Arial; font-size: x-large; "&gt;alarm will turn on&amp;nbsp;&lt;/span&gt;&lt;span class="Apple-style-span" style="font-family: Arial; font-size: x-large; "&gt;when the level &amp;gt; 60%&lt;/span&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</SPECIFICATIONS>
+      <ROTATION>0</ROTATION>
+      <SCALE>1</SCALE>
+      <IS_END_DEVICE>TRUE</IS_END_DEVICE>
+      <IS_DESKTOP_AVAILABLE>FALSE</IS_DESKTOP_AVAILABLE>
+      <SUBCOMPONENTS>
+       <SUBCOMPONENT>
+        <NAME>detector</NAME>
+        <X>0</X>
+        <Y>0</Y>
+        <Z_ORDER>1</Z_ORDER>
+        <CURRENT_IMAGE_INDEX>0</CURRENT_IMAGE_INDEX>
+        <SLOT_NUM>1</SLOT_NUM>
+        <SLOT_TYPE>1</SLOT_TYPE>
+        <OPACITY>1</OPACITY>
+        <FILL_COLOR>#000000</FILL_COLOR>
+        <ROTATION>0</ROTATION>
+        <IMAGES>
+         <IMAGE>../art/IoE/SmartDevices/carbon_dioxide_icon_off.png</IMAGE>
+         <IMAGE>../art/IoE/SmartDevices/carbon_dioxide_icon_on.png</IMAGE>
+        </IMAGES>
+       </SUBCOMPONENT>
+      </SUBCOMPONENTS>
+      <RULES>
+       <RULE>
+        <SUBCOMPONENT>detector</SUBCOMPONENT>
+        <IMAGE_INDEX>0</IMAGE_INDEX>
+        <DIGITAL_VALUE>0</DIGITAL_VALUE>
+        <ANALOG_LOW>0</ANALOG_LOW>
+        <ANALOG_HIGH>0</ANALOG_HIGH>
+       </RULE>
+       <RULE>
+        <SUBCOMPONENT>detector</SUBCOMPONENT>
+        <IMAGE_INDEX>1</IMAGE_INDEX>
+        <DIGITAL_VALUE>1000</DIGITAL_VALUE>
+        <ANALOG_LOW>0</ANALOG_LOW>
+        <ANALOG_HIGH>0</ANALOG_HIGH>
+       </RULE>
+      </RULES>
+     </THING_MODEL>
+     <IOE_CLIENT>
+      <CLIENT_MODE>REMOTE_SERVER</CLIENT_MODE>
+      <SERVER_ADDRESS>1.1.1.1</SERVER_ADDRESS>
+      <USERNAME>admin</USERNAME>
+      <PASSWORD>admin</PASSWORD>
+     </IOE_CLIENT>
+     <EMAIL_CLIENT>
+      <ENABLED>0</ENABLED>
+      <NAME />
+      <MAIL_ID />
+      <POP3_SERVER />
+      <SMTP_SERVER />
+      <USER />
+      <PASSWORD />
+      <NO_OF_MAILS>0</NO_OF_MAILS>
+     </EMAIL_CLIENT>
+    </ENGINE>
+    <WORKSPACE>
+     <LOGICAL>
+      <X>393</X>
+      <Y>332</Y>
+      <DEVCLUSTERID>1-1</DEVCLUSTERID>
+      <CUSTOM_IMAGE_LOGICAL />
+      <CUSTOM_IMAGE_PHYSICAL />
+      <MEM_ADDR>1554852608</MEM_ADDR>
+      <DEV_ADDR>1935811696</DEV_ADDR>
+     </LOGICAL>
+     <PHYSICAL translate="true">{fb151259-fd86-4f21-bb10-a43906aa3b70},{d2dd5364-7861-4f64-a0fa-cc60dc0ee68e},{8176b635-6764-4833-ab08-c7330c6273ac},{4bdeda3d-a2f1-4d45-8428-dd39a868b4d6}</PHYSICAL>
+     <PHYSICAL_CPUR>
+      <X_PN>0.0998839</X_PN>
+      <Y_PN>0.100561</Y_PN>
+      <X>344</X>
+      <Y>215</Y>
+      <PARENT_PATH>{fb151259-fd86-4f21-bb10-a43906aa3b70},{d2dd5364-7861-4f64-a0fa-cc60dc0ee68e},{8176b635-6764-4833-ab08-c7330c6273ac}</PARENT_PATH>
+     </PHYSICAL_CPUR>
+    </WORKSPACE>
+   </DEVICE>
+  

@@ -1,0 +1,250 @@
+<DEVICE>
+    <ENGINE>
+     <TYPE customModel="" model="Cloud-PT">Cloud</TYPE>
+     <NAME translate="true">Cloud0</NAME>
+     <POWER>true</POWER>
+     <DESCRIPTION />
+     <MODULE>
+      <TYPE>eNonRemovableModule</TYPE>
+      <MODEL />
+      <SLOT>
+       <TYPE>ePtCloudModule</TYPE>
+       <MODULE>
+        <TYPE>ePtCloudModule</TYPE>
+        <MODEL>PT-CLOUD-NM-1S</MODEL>
+        <PORT>
+         <TYPE>eSerial</TYPE>
+         <POWER>true</POWER>
+         <PINS>true</PINS>
+         <BANDWIDTH>1544</BANDWIDTH>
+         <FULLDUPLEX>true</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>false</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>false</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>00D0.D3C5.CEDB</MACADDRESS>
+         <BIA>00D0.D3C5.CEDB</BIA>
+         <CLOCKRATE>56000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <LMITYPE>eLmiCisco</LMITYPE>
+         <SUBLINKS>
+          <SUBLINK>
+           <NAME>304</NAME>
+           <DLCI>304</DLCI>
+          </SUBLINK>
+         </SUBLINKS>
+        </PORT>
+       </MODULE>
+      </SLOT>
+      <SLOT>
+       <TYPE>ePtCloudModule</TYPE>
+       <MODULE>
+        <TYPE>ePtCloudModule</TYPE>
+        <MODEL>PT-CLOUD-NM-1S</MODEL>
+        <PORT>
+         <TYPE>eSerial</TYPE>
+         <POWER>true</POWER>
+         <PINS>true</PINS>
+         <BANDWIDTH>1544</BANDWIDTH>
+         <FULLDUPLEX>true</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>false</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>false</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0040.0B33.8BC0</MACADDRESS>
+         <BIA>0040.0B33.8BC0</BIA>
+         <CLOCKRATE>56000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <LMITYPE>eLmiCisco</LMITYPE>
+         <SUBLINKS>
+          <SUBLINK>
+           <NAME>403</NAME>
+           <DLCI>403</DLCI>
+          </SUBLINK>
+         </SUBLINKS>
+        </PORT>
+       </MODULE>
+      </SLOT>
+      <SLOT>
+       <TYPE>ePtCloudModule</TYPE>
+       <MODULE>
+        <TYPE>ePtCloudModule</TYPE>
+        <MODEL>PT-CLOUD-NM-1S</MODEL>
+        <PORT>
+         <TYPE>eSerial</TYPE>
+         <POWER>true</POWER>
+         <PINS>true</PINS>
+         <BANDWIDTH>1544</BANDWIDTH>
+         <FULLDUPLEX>true</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>false</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>false</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0002.17CD.E541</MACADDRESS>
+         <BIA>0002.17CD.E541</BIA>
+         <CLOCKRATE>56000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <LMITYPE>eLmiCisco</LMITYPE>
+         <SUBLINKS />
+        </PORT>
+       </MODULE>
+      </SLOT>
+      <SLOT>
+       <TYPE>ePtCloudModule</TYPE>
+       <MODULE>
+        <TYPE>ePtCloudModule</TYPE>
+        <MODEL>PT-CLOUD-NM-1S</MODEL>
+        <PORT>
+         <TYPE>eSerial</TYPE>
+         <POWER>true</POWER>
+         <PINS>true</PINS>
+         <BANDWIDTH>1544</BANDWIDTH>
+         <FULLDUPLEX>true</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>false</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>false</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0090.0C2A.391A</MACADDRESS>
+         <BIA>0090.0C2A.391A</BIA>
+         <CLOCKRATE>56000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <LMITYPE>eLmiCisco</LMITYPE>
+         <SUBLINKS />
+        </PORT>
+       </MODULE>
+      </SLOT>
+      <SLOT>
+       <TYPE>ePtCloudModule</TYPE>
+       <MODULE>
+        <TYPE>ePtCloudModule</TYPE>
+        <MODEL>PT-CLOUD-NM-1AM</MODEL>
+        <PORT>
+         <TYPE>eModem</TYPE>
+         <POWER>true</POWER>
+         <PINS>true</PINS>
+         <BANDWIDTH>56</BANDWIDTH>
+         <FULLDUPLEX>true</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>false</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>false</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0006.2A3C.08A0</MACADDRESS>
+         <BIA>0006.2A3C.08A0</BIA>
+         <CLOCKRATE>2000000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <PHONENUMBER />
+        </PORT>
+       </MODULE>
+      </SLOT>
+      <SLOT>
+       <TYPE>ePtCloudModule</TYPE>
+       <MODULE>
+        <TYPE>ePtCloudModule</TYPE>
+        <MODEL>PT-CLOUD-NM-1AM</MODEL>
+        <PORT>
+         <TYPE>eModem</TYPE>
+         <POWER>true</POWER>
+         <PINS>true</PINS>
+         <BANDWIDTH>56</BANDWIDTH>
+         <FULLDUPLEX>true</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>false</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>false</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>000B.BEE7.E065</MACADDRESS>
+         <BIA>000B.BEE7.E065</BIA>
+         <CLOCKRATE>2000000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <PHONENUMBER />
+        </PORT>
+       </MODULE>
+      </SLOT>
+      <SLOT>
+       <TYPE>ePtCloudModule</TYPE>
+       <MODULE>
+        <TYPE>ePtCloudModule</TYPE>
+        <MODEL>PT-CLOUD-NM-1CE</MODEL>
+        <PORT>
+         <TYPE>eCopperEthernet</TYPE>
+         <POWER>true</POWER>
+         <PINS>true</PINS>
+         <BANDWIDTH>10000</BANDWIDTH>
+         <FULLDUPLEX>false</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>true</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>true</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0060.5C58.8A77</MACADDRESS>
+         <BIA>0060.5C58.8A77</BIA>
+         <CLOCKRATE>2000000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+        </PORT>
+       </MODULE>
+      </SLOT>
+      <SLOT>
+       <TYPE>ePtCloudModule</TYPE>
+       <MODULE>
+        <TYPE>ePtCloudModule</TYPE>
+        <MODEL>PT-CLOUD-NM-1CX</MODEL>
+        <PORT>
+         <TYPE>eCopperCoaxial</TYPE>
+         <POWER>true</POWER>
+         <PINS>true</PINS>
+         <BANDWIDTH>1544</BANDWIDTH>
+         <FULLDUPLEX>true</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>false</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>false</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0001.63C5.1339</MACADDRESS>
+         <BIA>0001.63C5.1339</BIA>
+         <CLOCKRATE>2000000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+        </PORT>
+       </MODULE>
+      </SLOT>
+      <SLOT>
+       <TYPE>ePtCloudModule</TYPE>
+      </SLOT>
+      <SLOT>
+       <TYPE>ePtCloudModule</TYPE>
+      </SLOT>
+     </MODULE>
+     <CUSTOM_VARS>AAAAAA==</CUSTOM_VARS>
+     <CUSTOM_INTERFACE />
+     <SYS_CONTACT />
+     <SYS_LOCATION />
+     <COORD_SETTINGS>
+      <X_COORD>350</X_COORD>
+      <Y_COORD>350</Y_COORD>
+      <Z_COORD>0</Z_COORD>
+     </COORD_SETTINGS>
+     <MODEM_CONNECTION_TYPES />
+     <MODEM_CONNECTIONS />
+     <PHONE_CONNECTIONS />
+     <CONNECTIONS>
+      <CONNECTION>
+       <PORT>Serial0</PORT>
+       <SUBLINK>304</SUBLINK>
+       <DLCI>304</DLCI>
+       <PORT>Serial1</PORT>
+       <SUBLINK>403</SUBLINK>
+       <DLCI>403</DLCI>
+      </CONNECTION>
+     </CONNECTIONS>
+     <NO_OF_TV_IMAGES>0</NO_OF_TV_IMAGES>
+    </ENGINE>
+    <WORKSPACE>
+     <LOGICAL>
+      <X>216</X>
+      <Y>73</Y>
+      <DEVCLUSTERID>1-1</DEVCLUSTERID>
+      <CUSTOM_IMAGE_PHYSICAL />
+      <CUSTOM_IMAGE_LOGICAL />
+      <MEM_ADDR>193884928</MEM_ADDR>
+      <DEV_ADDR>199607912</DEV_ADDR>
+     </LOGICAL>
+     <PHYSICAL translate="true">Intercity,Home City,Corporate Office,Main Wiring Closet,Rack,Cloud0</PHYSICAL>
+    </WORKSPACE>
+   </DEVICE>
+  

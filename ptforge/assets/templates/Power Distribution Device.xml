@@ -1,0 +1,49 @@
+<DEVICE>
+    <ENGINE>
+     <TYPE model="Power Distribution Device" customModel="">Power Distribution Device</TYPE>
+     <NAME translate="true">Power Distribution Device0</NAME>
+     <POWER>true</POWER>
+     <DESCRIPTION />
+     <MODULE>
+      <TYPE>eNonRemovableModule</TYPE>
+      <MODEL />
+     </MODULE>
+     <CUSTOM_VARS>AAAAAA==</CUSTOM_VARS>
+     <CUSTOM_INTERFACE />
+     <SYS_CONTACT />
+     <SYS_LOCATION />
+     <COORD_SETTINGS>
+      <X_COORD>1269.51</X_COORD>
+      <Y_COORD>1236.93</Y_COORD>
+      <Z_COORD>0</Z_COORD>
+     </COORD_SETTINGS>
+     <SERIALNUMBER>PTT0810RE60</SERIALNUMBER>
+     <EXT_ATTRIBUTES>MTBF:300000;cost:250;power source:1;rack units:2;wattage:5;</EXT_ATTRIBUTES>
+     <USB_PORT_COUNT>0</USB_PORT_COUNT>
+     <TEMPLATE_CREATION_TIME>0</TEMPLATE_CREATION_TIME>
+     <USER_APPS>
+      <RUNNING_APPS />
+      <DESKTOP_APPS />
+     </USER_APPS>
+    </ENGINE>
+    <WORKSPACE>
+     <LOGICAL>
+      <X>3899</X>
+      <Y>3900</Y>
+      <DEVCLUSTERID>1-1</DEVCLUSTERID>
+      <CUSTOM_IMAGE_LOGICAL />
+      <CUSTOM_IMAGE_PHYSICAL />
+      <MEM_ADDR>1346424304</MEM_ADDR>
+      <DEV_ADDR>1401931360</DEV_ADDR>
+     </LOGICAL>
+     <PHYSICAL translate="true">{8e2214e8-f691-4965-a59f-85be0bc17975},{dc1c0b33-298a-4595-b2d0-e205b178c546},{c8585b31-8164-4258-8fea-c70c8607e65e},{4ef34d04-6aab-42da-9d01-522072890a33},{e3c3c542-5047-47be-b4fc-511890fa0a1e},{b110bb69-81e4-4e61-9136-4e51e7f5f78d}</PHYSICAL>
+     <PHYSICAL_CPUR>
+      <X_PN>0.99075</X_PN>
+      <Y_PN>0.979</Y_PN>
+      <X>3</X>
+      <Y>0</Y>
+      <PARENT_PATH>{8e2214e8-f691-4965-a59f-85be0bc17975},{dc1c0b33-298a-4595-b2d0-e205b178c546},{c8585b31-8164-4258-8fea-c70c8607e65e},{4ef34d04-6aab-42da-9d01-522072890a33}</PARENT_PATH>
+     </PHYSICAL_CPUR>
+    </WORKSPACE>
+   </DEVICE>
+   

@@ -1,0 +1,35 @@
+{
+  "devices": [
+    {
+      "model": "PC-PT",
+      "name": "A"
+    },
+    {
+      "model": "PC-PT",
+      "name": "B"
+    },
+    {
+      "model": "2960-24TT",
+      "name": "SW"
+    },
+    {
+      "model": "2911",
+      "name": "R"
+    }
+  ],
+  "name": "autoport",
+  "links": [
+    {
+      "to": "SW",
+      "from": "A"
+    },
+    {
+      "to": "SW",
+      "from": "B"
+    },
+    {
+      "to": "R",
+      "from": "SW"
+    }
+  ]
+}

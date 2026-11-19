@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Packet Tracer 拓扑引擎",
+    "description": "离线读写 Cisco Packet Tracer .pkt：生成拓扑、精确连线、注入 IOS 配置，并交给 Packet Tracer 打开。",
+    "detail": "ptforge 引擎在本机解密/加密 .pkt 容器（Twofish-EAX），用本机 PT 模板构建设备与链路，读写 RUNNINGCONFIG 注入配置。工具：pt_models 查型号与接口、pt_build 生成拓扑、pt_inspect 解析现有文件、pt_apply 写入配置、pt_open 在 PT 中打开。"
+  }
+}

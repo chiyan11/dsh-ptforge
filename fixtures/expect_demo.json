@@ -1,0 +1,1 @@
+{"expect":[{"device":"R1","interface":"GigabitEthernet0/0","ip":"192.168.10.1"},{"device":"PC0","interface":"FastEthernet0","ip":"192.168.10.10"},{"device":"R1","route":"172.18.20.0/24"}]}

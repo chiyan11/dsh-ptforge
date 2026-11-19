@@ -1,0 +1,207 @@
+<DEVICE>
+    <ENGINE>
+     <TYPE customModel="" model="WLC-PT">WirelessLanController</TYPE>
+     <NAME translate="true">Wireless LAN Controller0</NAME>
+     <POWER>true</POWER>
+     <DESCRIPTION />
+     <MODULE>
+      <TYPE>eNonRemovableModule</TYPE>
+      <MODEL />
+      <SLOT>
+       <TYPE>eNonRemovableModule</TYPE>
+       <MODULE>
+        <TYPE>eNonRemovableModule</TYPE>
+        <MODEL />
+        <PORT>
+         <TYPE>eCopperGigabitEthernet</TYPE>
+         <POWER>true</POWER>
+         <MEDIATYPE>0</MEDIATYPE>
+         <PINS>true</PINS>
+         <BANDWIDTH>1000000</BANDWIDTH>
+         <FULLDUPLEX>true</FULLDUPLEX>
+         <AUTONEGOTIATEBANDWIDTH>true</AUTONEGOTIATEBANDWIDTH>
+         <AUTONEGOTIATEDUPLEX>true</AUTONEGOTIATEDUPLEX>
+         <MACADDRESS>0001.9786.D55A</MACADDRESS>
+         <BIA>0001.9786.D55A</BIA>
+         <CLOCKRATE>2000000</CLOCKRATE>
+         <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+         <DESCRIPTION />
+         <CHANNEL>0</CHANNEL>
+         <COVERAGERANGE>0</COVERAGERANGE>
+        </PORT>
+       </MODULE>
+      </SLOT>
+     </MODULE>
+     <CUSTOM_VARS>AAAAAA==</CUSTOM_VARS>
+     <CUSTOM_INTERFACE />
+     <SYS_CONTACT />
+     <SYS_LOCATION />
+     <COORD_SETTINGS>
+      <X_COORD>1230.26</X_COORD>
+      <Y_COORD>1233.16</Y_COORD>
+      <Z_COORD>0</Z_COORD>
+     </COORD_SETTINGS>
+     <SERIALNUMBER>PTT08107B9C</SERIALNUMBER>
+     <EXT_ATTRIBUTES>MTBF:300000;cost:750;power source:1;rack units:2;wattage:5;</EXT_ATTRIBUTES>
+     <USB_PORT_COUNT>0</USB_PORT_COUNT>
+     <TEMPLATE_CREATION_TIME>0</TEMPLATE_CREATION_TIME>
+     <SYS_NAME>Switch</SYS_NAME>
+     <RUNNINGCONFIG />
+     <STARTUPCONFIG />
+     <BUILD_IN_ADDR>0001.43AE.E502</BUILD_IN_ADDR>
+     <SECURITY>
+      <KEY_NAME />
+      <TEMP_KEY_NAME />
+      <RSA_KEY />
+      <TEMP_RSA_KEY />
+      <TIME_DATE />
+      <ENABLED>0</ENABLED>
+      <MODULUS_BITS>0</MODULUS_BITS>
+     </SECURITY>
+     <ALGORITHM_SETTINGS>
+      <USE_GLOBAL>true</USE_GLOBAL>
+      <CBAC_HALF_OPEN_SESSION_MULTIPLIER>1</CBAC_HALF_OPEN_SESSION_MULTIPLIER>
+      <TCP_MAX_CONNECTING_SESSIONS>100</TCP_MAX_CONNECTING_SESSIONS>
+      <TCP_MAX_OPENED_SESSIONS>1000</TCP_MAX_OPENED_SESSIONS>
+      <INTERFACE_QUEUE_SIZE>10</INTERFACE_QUEUE_SIZE>
+      <STORM_CONTROL_MULTIPLIER>10</STORM_CONTROL_MULTIPLIER>
+      <TCP_MAX_RETRANSMISSION_TIMEOUT>1000</TCP_MAX_RETRANSMISSION_TIMEOUT>
+     </ALGORITHM_SETTINGS>
+     <VLANS>
+      <VLAN rspan="0" number="1" name="default" />
+      <VLAN rspan="0" number="1002" name="fddi-default" />
+      <VLAN rspan="0" number="1003" name="token-ring-default" />
+      <VLAN rspan="0" number="1004" name="fddinet-default" />
+      <VLAN rspan="0" number="1005" name="trnet-default" />
+     </VLANS>
+     <VTP>
+      <DOMAIN_NAME />
+      <MODE>0</MODE>
+      <VERSION>1</VERSION>
+      <PASSWORD />
+      <CONFIG_REVISION>0</CONFIG_REVISION>
+      <UPDATER_IP>0.0.0.0</UPDATER_IP>
+      <UPDATE_TIMESTAMP>0-0-00 00:00:00</UPDATE_TIMESTAMP>
+     </VTP>
+     <DHCP_SNOOPING_BINDING_DB_AGENT>
+      <CONFIGURED_FILENAME />
+      <TMP_FILENAME />
+     </DHCP_SNOOPING_BINDING_DB_AGENT>
+     <SDM>
+      <ACTIVE_TEMPLATE>0</ACTIVE_TEMPLATE>
+      <NEXT_TEMPLATE>0</NEXT_TEMPLATE>
+     </SDM>
+     <MANAGEMENT_INTERFACE>
+      <PORT>
+       <TYPE>eVlan</TYPE>
+       <POWER>true</POWER>
+       <MEDIATYPE>0</MEDIATYPE>
+       <PINS>false</PINS>
+       <BANDWIDTH>0</BANDWIDTH>
+       <FULLDUPLEX>true</FULLDUPLEX>
+       <AUTONEGOTIATEBANDWIDTH>true</AUTONEGOTIATEBANDWIDTH>
+       <AUTONEGOTIATEDUPLEX>true</AUTONEGOTIATEDUPLEX>
+       <MACADDRESS>0001.43AE.E502</MACADDRESS>
+       <BIA>0001.43AE.E502</BIA>
+       <CLOCKRATE>2000000</CLOCKRATE>
+       <CLOCKRATEFLAG>false</CLOCKRATEFLAG>
+       <DESCRIPTION />
+       <CHANNEL>0</CHANNEL>
+       <COVERAGERANGE>0</COVERAGERANGE>
+       <IP>1.0.0.2</IP>
+       <SUBNET>255.0.0.0</SUBNET>
+       <PORT_GATEWAY>1.0.0.1</PORT_GATEWAY>
+       <PORT_DNS />
+       <PORT_DHCP_ENABLE>false</PORT_DHCP_ENABLE>
+       <ND_SUPPRESSED>false</ND_SUPPRESSED>
+       <TIMEOUT>14400000</TIMEOUT>
+       <PC_FIREWALL>false</PC_FIREWALL>
+       <PC_IPV6_FIREWALL>false</PC_IPV6_FIREWALL>
+       <IPV6_ENABLED>false</IPV6_ENABLED>
+       <IPV6_ADDRESS_AUTOCONFIG>false</IPV6_ADDRESS_AUTOCONFIG>
+       <IPV6_PORT_GATEWAY />
+       <IPV6_PORT_DNS />
+       <IPV6_LINK_LOCAL />
+       <IPV6_DEFAULT_LINK_LOCAL>FE80::201:43FF:FEAE:E502</IPV6_DEFAULT_LINK_LOCAL>
+       <IPV6_PORT_DHCP_ENABLED>false</IPV6_PORT_DHCP_ENABLED>
+       <IPV6_ADDRESSES />
+       <IP_UNNUMBERED />
+      </PORT>
+     </MANAGEMENT_INTERFACE>
+     <CAPWAP_AC>
+      <WLANS>
+       <WLAN_CONFIG>
+        <NAME>wlan1</NAME>
+        <SSID>ssid1</SSID>
+        <AUTHEN_TYPE>1</AUTHEN_TYPE>
+        <ENCRYPT_TYPE>1</ENCRYPT_TYPE>
+        <WEP_KEY>1234567890</WEP_KEY>
+        <RADIUS_IP />
+        <RADIUS_SECRET />
+        <VLAN>10</VLAN>
+       </WLAN_CONFIG>
+       <WLAN_CONFIG>
+        <NAME>wlan2</NAME>
+        <SSID>ssid2</SSID>
+        <AUTHEN_TYPE>4</AUTHEN_TYPE>
+        <ENCRYPT_TYPE>4</ENCRYPT_TYPE>
+        <WEP_KEY>12345678</WEP_KEY>
+        <RADIUS_IP />
+        <RADIUS_SECRET />
+        <VLAN>20</VLAN>
+       </WLAN_CONFIG>
+      </WLANS>
+      <AP_GROUPS>
+       <AP_GROUP>
+        <NAME>default-group</NAME>
+        <WLANS>
+         <WLAN>
+          <NAME>wlan1</NAME>
+         </WLAN>
+         <WLAN>
+          <NAME>wlan2</NAME>
+         </WLAN>
+        </WLANS>
+       </AP_GROUP>
+       <AP_GROUP>
+        <NAME>group2</NAME>
+        <WLANS>
+         <WLAN>
+          <NAME>wlan1</NAME>
+         </WLAN>
+        </WLANS>
+       </AP_GROUP>
+      </AP_GROUPS>
+      <APS>
+       <AP>
+        <NAME>0001.6454.0A01</NAME>
+        <AP_GROUP>default-group</AP_GROUP>
+       </AP>
+       <AP>
+        <NAME>0090.0C1D.B201</NAME>
+        <AP_GROUP>group2</AP_GROUP>
+       </AP>
+      </APS>
+     </CAPWAP_AC>
+    </ENGINE>
+    <WORKSPACE>
+     <LOGICAL>
+      <X>208.5</X>
+      <Y>24</Y>
+      <DEVCLUSTERID>1-1</DEVCLUSTERID>
+      <CUSTOM_IMAGE_LOGICAL />
+      <CUSTOM_IMAGE_PHYSICAL />
+      <MEM_ADDR>522131224</MEM_ADDR>
+      <DEV_ADDR>638616312</DEV_ADDR>
+     </LOGICAL>
+     <PHYSICAL translate="true">{79bb5e2e-1a62-4419-9008-cde9da1a8895},{31998543-fe57-4b68-b237-7af0febde9db},{14e5df6c-7010-49ba-81ed-89083309d9ed},{68f1fc0e-4064-4c33-9aee-2ce3b2aa0b3a},{f4c4cede-524c-44ec-b789-de609cb835c5},{985781af-205d-42b1-8bcd-65fd3b1cb8ab}</PHYSICAL>
+     <PHYSICAL_CPUR>
+      <X_PN>0.0585</X_PN>
+      <Y_PN>0.0155</Y_PN>
+      <X>13</X>
+      <Y>0</Y>
+      <PARENT_PATH>{79bb5e2e-1a62-4419-9008-cde9da1a8895},{31998543-fe57-4b68-b237-7af0febde9db},{14e5df6c-7010-49ba-81ed-89083309d9ed},{68f1fc0e-4064-4c33-9aee-2ce3b2aa0b3a}</PARENT_PATH>
+     </PHYSICAL_CPUR>
+    </WORKSPACE>
+   </DEVICE>
+   

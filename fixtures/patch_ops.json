@@ -1,0 +1,6 @@
+{"ops":[
+ {"op":"rename","device":"SW1","name":"CORE"},
+ {"op":"set_switchport","device":"CORE","port":"FastEthernet0/1","vlan":10},
+ {"op":"set_config","device":"CORE","lines":["hostname CORE"],"append":true},
+ {"op":"set_ipv4","device":"PC0","port":"FastEthernet0","address":"192.168.99.7","mask":"255.255.255.0","gateway":"192.168.99.1"}
+]}

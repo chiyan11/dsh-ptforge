@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Packet Tracer Topology Engine",
+    "description": "Read and write Cisco Packet Tracer .pkt files offline: build topologies, wire them precisely, inject IOS configuration, then open them in Packet Tracer.",
+    "detail": "The ptforge engine decrypts/re-encrypts the .pkt container (Twofish-EAX) locally, assembles devices and links from this machine's own PT templates, and writes RUNNINGCONFIG text that PT parses on load. Tools: pt_models, pt_build, pt_inspect, pt_apply, pt_open."
+  }
+}

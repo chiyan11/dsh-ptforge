@@ -1,0 +1,1 @@
+{"ops":[{"op":"set_switchport","device":"SW1","port":"FastEthernet0/1","vlan":10}]}

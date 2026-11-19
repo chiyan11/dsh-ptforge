@@ -1,0 +1,40 @@
+{
+  "name": "office_lan",
+  "devices": [
+    {
+      "model": "2911",
+      "name": "R1",
+      "config": [
+        "hostname R1",
+        "interface GigabitEthernet0/0",
+        " ip address 192.168.10.1 255.255.255.0",
+        " no shutdown"
+      ]
+    },
+    {
+      "model": "2960-24TT",
+      "name": "SW1",
+      "config": [
+        "hostname SW1",
+        "interface FastEthernet0/1",
+        " switchport mode access",
+        " switchport access vlan 1"
+      ]
+    },
+    {
+      "model": "PC-PT",
+      "name": "PC0",
+      "ipv4": ["192.168.10.10", "255.255.255.0", "192.168.10.1"]
+    },
+    {
+      "model": "PC-PT",
+      "name": "PC1",
+      "ipv4": ["192.168.10.11", "255.255.255.0", "192.168.10.1"]
+    }
+  ],
+  "links": [
+    { "from": "R1", "to": "SW1", "to_port": "FastEthernet0/1", "cable": "straight" },
+    { "from": "PC0", "to": "SW1", "to_port": "FastEthernet0/2", "cable": "straight" },
+    { "from": "PC1", "to": "SW1", "to_port": "FastEthernet0/3", "cable": "straight" }
+  ]
+}

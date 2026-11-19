@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+*.log
+
+# 试验与取证产物（体积大、可重新生成）
+fixtures/probe/
+fixtures/decoded/
+fixtures/harvest/
+fixtures/exp/
+fixtures/variants/
+fixtures/report_*/
+fixtures/**/*.pkt
+*.png
+
+# 本地环境
+.env
+.dsh-pilot/
+
+tests/_tmp/
+
