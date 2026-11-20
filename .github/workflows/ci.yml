@@ -45,6 +45,13 @@ jobs:
           python -m ptforge doctor "$tmp/lab.pkt"
           python -m ptforge report "$tmp/lab.pkt" -o "$tmp/report"
           test -s "$tmp/report/report.md"
+      - name: Examples
+        run: |
+          set -eux
+          python examples/01_build_and_check.py
+          python examples/02_patch_and_state.py
+          python examples/03_report.py
+          test -s examples/out/report/report.md
 
   package:
     runs-on: ubuntu-latest
@@ -81,3 +88,4 @@ jobs:
         run: docker build -t ptforge:ci .
       - name: Run image
         run: docker run --rm ptforge:ci --help
+

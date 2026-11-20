@@ -29,6 +29,12 @@ _INTERFACE = re.compile(r"^interface\s+(\S+)")
 _STATIC_ROUTE = re.compile(r"^ip route\s+(\S+)\s+(\S+)\s+(\S+)")
 _ACCESS_VLAN = re.compile(r"^switchport access vlan\s+(\d+)")
 _TRUNK_VLAN = re.compile(r"^switchport trunk allowed vlan\s+(.+)$")
+# Sub-commands that belong to an interface block even when written without
+# indentation (hand-written specs and our own build input).
+_INTERFACE_ATTRIBUTE = re.compile(
+    r"^(ip address|ip helper|description|shutdown|no shutdown|switchport|"
+    r"duplex|speed|channel-group|spanning-tree|ip access-group)\b"
+)
 
 
 class StateError(RuntimeError):
@@ -51,9 +57,19 @@ def _sections(lines: list[str]) -> dict[str, list[str]]:
             current = match.group(1)
             sections.setdefault(current, [])
             continue
-        if line and not line[0].isspace() and not line.startswith("!"):
+        stripped = line.strip()
+        # Packet Tracer indents sub-commands, but hand-written specs (and our
+        # own build input) often do not. Keep known interface attributes in the
+        # block even when they start in column 0.
+        if (
+            current != "GLOBAL"
+            and stripped
+            and not line[0].isspace()
+            and not stripped.startswith("!")
+            and not _INTERFACE_ATTRIBUTE.match(stripped)
+        ):
             current = "GLOBAL"
-        sections.setdefault(current, []).append(line.strip())
+        sections.setdefault(current, []).append(stripped)
     return sections
 
 

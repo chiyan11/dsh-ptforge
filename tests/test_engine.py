@@ -147,6 +147,25 @@ class StateTests(unittest.TestCase):
         self.assertEqual([r["ok"] for r in result["results"]], [True, True, False])
         self.assertIn("missing", result["results"][2]["problems"][0])
 
+    def test_unindented_interface_commands_stay_in_the_block(self) -> None:
+        from ptforge import state
+
+        builder = TopologyBuilder()
+        builder.add_device("2911", "R1", 200, 200, config=[
+            "hostname R1",
+            "interface GigabitEthernet0/0",
+            "ip address 10.10.0.254 255.255.255.0",
+            "no shutdown",
+            "ip route 0.0.0.0 0.0.0.0 10.10.0.1",
+        ])
+        tmp = Path(__file__).with_name("_tmp") / "flat_config.pkt"
+        builder.save(tmp)
+        r1 = state.device_state(state.load(tmp), "R1")
+        gi0 = next(i for i in r1["interfaces"] if i["name"] == "GigabitEthernet0/0")
+        self.assertEqual(gi0["ip"], "10.10.0.254")
+        self.assertEqual(gi0["prefix"], 24)
+        self.assertEqual(r1["static_routes"][0]["cidr"], "0.0.0.0/0")
+
 
 class PatchTests(unittest.TestCase):
     def test_rename_does_not_orphan_later_ops(self) -> None:
@@ -248,6 +267,8 @@ class ReportTests(unittest.TestCase):
         self.assertTrue((out / "report.md").exists())
         self.assertTrue((out / "captions.json").exists())
         self.assertEqual(result["links"], 1)
+        self.assertEqual(result["devices"], 2)
+        self.assertEqual(result["figures"], 1)
         self.assertIn("地址表", (out / "report.md").read_text(encoding="utf-8"))
 
 

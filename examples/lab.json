@@ -1,0 +1,23 @@
+{
+  "name": "branch",
+  "devices": [
+    {
+      "model": "2911",
+      "name": "R1",
+      "config": [
+        "hostname R1",
+        "interface GigabitEthernet0/0",
+        "ip address 10.10.0.254 255.255.255.0",
+        "no shutdown"
+      ]
+    },
+    {"model": "2960-24TT", "name": "SW1", "config": ["hostname SW1"]},
+    {"model": "PC-PT", "name": "PC1", "ipv4": "10.10.0.11/24,10.10.0.254"},
+    {"model": "PC-PT", "name": "PC2", "ipv4": "10.10.0.12/24,10.10.0.254"}
+  ],
+  "links": [
+    {"from": "R1", "to": "SW1"},
+    {"from": "PC1", "to": "SW1"},
+    {"from": "PC2", "to": "SW1"}
+  ]
+}

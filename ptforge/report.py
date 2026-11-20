@@ -103,6 +103,7 @@ def build_report(
         "dir": str(target),
         "captions": str(target / "captions.json"),
         "report": str(target / "report.md"),
+        "devices": len(described["devices"]),
         "figures": len(figures),
         "addresses": len(addresses),
         "links": len(links),
