@@ -5,7 +5,7 @@ function Await($op, $type) { $task = $asTask.MakeGenericMethod($type).Invoke($nu
 [Windows.Storage.StorageFile,Windows.Storage,ContentType=WindowsRuntime] | Out-Null
 [Windows.Graphics.Imaging.BitmapDecoder,Windows.Graphics.Imaging,ContentType=WindowsRuntime] | Out-Null
 [Windows.Media.Ocr.OcrEngine,Windows.Foundation,ContentType=WindowsRuntime] | Out-Null
-$file = Await ([Windows.Storage.StorageFile]::GetFileFromPathAsync('D:\coding\daily\dsh-ptforge\fixtures\probe\pasted.png')) ([Windows.Storage.StorageFile])
+$file = Await ([Windows.Storage.StorageFile]::GetFileFromPathAsync('D:\coding\dsh-ptforge\fixtures\probe\pasted.png')) ([Windows.Storage.StorageFile])
 $stream = Await ($file.OpenAsync([Windows.Storage.FileAccessMode]::Read)) ([Windows.Storage.Streams.IRandomAccessStream])
 $decoder = Await ([Windows.Graphics.Imaging.BitmapDecoder]::CreateAsync($stream)) ([Windows.Graphics.Imaging.BitmapDecoder])
 $bitmap = Await ($decoder.GetSoftwareBitmapAsync()) ([Windows.Graphics.Imaging.SoftwareBitmap])
@@ -13,3 +13,4 @@ $engine = [Windows.Media.Ocr.OcrEngine]::TryCreateFromUserProfileLanguages()
 if (-not $engine) { 'no engine'; exit 1 }
 $result = Await ($engine.RecognizeAsync($bitmap)) ([Windows.Media.Ocr.OcrResult])
 $result.Text
+
