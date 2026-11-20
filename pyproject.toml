@@ -3,7 +3,10 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ptforge"
+# The PyPI name is dsh-ptforge: plain "ptforge" is already taken by an
+# unrelated prompt-optimization project. The import package is still `ptforge`
+# and the console scripts are still `ptforge` / `ptforge-gui`.
+name = "dsh-ptforge"
 version = "0.1.0"
 description = "Declarative Cisco Packet Tracer automation: offline .pkt codec, topology builder, state assertions, and a minimal Win32 runtime."
 readme = "README.md"

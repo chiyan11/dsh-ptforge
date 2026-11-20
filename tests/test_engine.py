@@ -325,3 +325,18 @@ class SpecTests(unittest.TestCase):
         devices, _ = spec.parse_spec(data)
         self.assertEqual(devices[0].ipv4, ("10.0.0.10", "255.255.255.0", ""))
 
+
+class ModelsCliTests(unittest.TestCase):
+    def test_query_filters_model_list(self) -> None:
+        import contextlib
+        import io
+
+        from ptforge import cli
+
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            code = cli.main(["models", "--query", "2960"])
+        self.assertEqual(code, 0)
+        out = buf.getvalue()
+        self.assertIn("2960-24TT", out)
+        self.assertNotIn("2911", out)

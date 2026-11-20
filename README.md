@@ -114,10 +114,12 @@ Packet Tracer 8.x 的 `PacketTracer.exe` 里没有 `PTAPI`、没有 socket 服�
 
 ### 方式一：pip 安装
 
+PyPI 上的分发名是 **`dsh-ptforge`**（`ptforge` 已被另一个无关项目占用），import 包名仍是 `ptforge`，命令仍是 `ptforge` / `ptforge-gui`：
+
 ```powershell
-pip install .                 # 纯离线引擎，无依赖
-pip install ".[gui]"          # 含 Pillow，可用 Windows 运行时工具
-pip install ".[gui,dev]"      # 另含 pytest
+pip install dsh-ptforge              # 纯离线引擎，无依赖
+pip install "dsh-ptforge[gui]"       # 含 Pillow，可用 Windows 运行时工具
+pip install "dsh-ptforge[gui,dev]"   # 另含 pytest
 ```
 
 安装后可直接使用两个入口：
@@ -208,9 +210,28 @@ docker compose run --rm ptforge build lab.json -o lab.pkt
 
 | job | 内容 |
 | --- | --- |
-| `test` | Python 3.10 / 3.11 / 3.12 矩阵，跑 19 个单测 + `build → inspect → doctor → report` 冒烟 |
+| `test` | Python 3.10 / 3.11 / 3.12 矩阵，跑 20 个单测 + `build → inspect → doctor → report` 冒烟 |
 | `package` | 构建 wheel/sdist，并断言 wheel 内含骨架与 ≥80 个模板，产物作为 artifact 上传 |
 | `docker` | 构建镜像并执行 `--help` |
+
+### 发布到 PyPI（Trusted Publishing）
+
+仓库自带 [`.github/workflows/publish.yml`](.github/workflows/publish.yml)，用 OIDC 发布，**不需要在仓库里存 PyPI token**。首次发布前在 PyPI 的 *Publishing → Add a new pending publisher* 填：
+
+| 字段 | 值 |
+| --- | --- |
+| PyPI Project Name | `dsh-ptforge` |
+| Owner | `chiyan11` |
+| Repository name | `dsh-ptforge` |
+| Workflow name | `publish.yml` |
+| Environment name | `pypi` |
+
+然后在 GitHub 仓库 *Settings → Environments* 建一个名为 `pypi` 的环境（可选，但推荐，可加人工审批）。发布时二选一：
+
+- 在 GitHub 创建 Release（tag 形如 `v0.1.0`）→ 自动构建并上传；
+- 或手动跑 `publish` workflow。
+
+构建 job 会再次断言 wheel 内含 8.1.1 骨架与 ≥80 个模板，避免发布一个缺资产的包。
 
 ---
 
@@ -298,7 +319,7 @@ python -m ptforge report office_lan.pkt -o report --title "实验室验收报告
 ## 验收与测试
 
 ```powershell
-python -m unittest discover -s tests     # 19 tests, OK
+python -m unittest discover -s tests     # 20 tests, OK
 ```
 
 | 场景 | 结果 |
@@ -330,7 +351,7 @@ dsh-ptforge/
 ├── pyproject.toml           # 打包元数据、入口点、包数据
 ├── Dockerfile               # 离线引擎镜像（非 root、/work 卷）
 ├── docker-compose.yml       # 一行式容器调用
-├── .github/workflows/ci.yml # 测试 / 打包 / 镜像 三条流水线
+├── .github/workflows/       # ci.yml（测试/打包/镜像）+ publish.yml（PyPI）
 ├── ptforge/                 # 引擎（可独立作为 Python 包使用）
 │   ├── ptcrypto/            # Twofish / CMAC / CTR / EAX / 容器格式
 │   ├── assets/              # 8.1.1 骨架、80 个设备模板、端口命名表
@@ -344,7 +365,7 @@ dsh-ptforge/
 │   └── cli.py / guitool.py  # 命令行入口
 ├── packages/dsh-ptforge/    # DSH bundle（含引擎副本）
 ├── docs/TOOLS.md            # 18 个工具速查表
-├── tests/                   # 19 个单测
+├── tests/                   # 20 个单测
 ├── fixtures/                # 样例与 spec
 ├── LICENSE / NOTICE         # MIT（本项目）与第三方代码范围说明
 └── scripts/sync_engine.ps1  # 把引擎同步进 bundle
@@ -359,4 +380,5 @@ dsh-ptforge/
 上游仓库未提供 LICENSE 文件；`LICENSE` 里的 MIT 只覆盖本项目自己写的代码，vendored 的密码学实现不在授权范围内（详见 [`NOTICE`](NOTICE)）。如果你要商业分发或换许可证，请先用有明确授权的替代实现替换 `ptcrypto/`，或联系上游作者取得许可。
 
 本项目与 Cisco 无关，Packet Tracer 是其商标；这里使用的 `.pkt` 容器格式与 IOS 命令语法均为未公开接口，仅用于教学/研究场景的互操作。
+
 

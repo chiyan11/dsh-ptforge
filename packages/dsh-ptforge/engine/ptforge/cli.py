@@ -39,6 +39,15 @@ def _model_info() -> list[dict]:
 
 def cmd_models(args: argparse.Namespace) -> int:
     info = _model_info()
+    query = (getattr(args, "query", None) or "").strip().lower()
+    if query:
+        info = [item for item in info if query in item["model"].lower()]
+    limit = getattr(args, "limit", 0) or 0
+    if limit > 0:
+        info = info[:limit]
+    if not info:
+        print("no models matched")
+        return 0
     if args.json:
         _emit({"models": info}, as_json=True)
         return 0
@@ -408,6 +417,8 @@ def main(argv: list[str] | None = None) -> int:
     sub = parser.add_subparsers(dest="command", required=True)
 
     p_models = sub.add_parser("models", help="list device models with their interfaces")
+    p_models.add_argument("-q", "--query", help="only models whose name contains this text (case-insensitive)")
+    p_models.add_argument("-n", "--limit", type=int, default=0, help="cap the number of rows (0 = all)")
     p_models.set_defaults(func=cmd_models)
 
     p_build = sub.add_parser("build", help="build a .pkt from a JSON spec")
@@ -502,6 +513,7 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
 
 
 
