@@ -208,7 +208,7 @@ docker compose run --rm ptforge build lab.json -o lab.pkt
 
 | job | 内容 |
 | --- | --- |
-| `test` | Python 3.10 / 3.11 / 3.12 矩阵，跑 18 个单测 + `build → inspect → doctor → report` 冒烟 |
+| `test` | Python 3.10 / 3.11 / 3.12 矩阵，跑 19 个单测 + `build → inspect → doctor → report` 冒烟 |
 | `package` | 构建 wheel/sdist，并断言 wheel 内含骨架与 ≥80 个模板，产物作为 artifact 上传 |
 | `docker` | 构建镜像并执行 `--help` |
 
@@ -298,7 +298,7 @@ python -m ptforge report office_lan.pkt -o report --title "实验室验收报告
 ## 验收与测试
 
 ```powershell
-python -m unittest discover -s tests     # 18 tests, OK
+python -m unittest discover -s tests     # 19 tests, OK
 ```
 
 | 场景 | 结果 |
@@ -344,7 +344,7 @@ dsh-ptforge/
 │   └── cli.py / guitool.py  # 命令行入口
 ├── packages/dsh-ptforge/    # DSH bundle（含引擎副本）
 ├── docs/TOOLS.md            # 18 个工具速查表
-├── tests/                   # 18 个单测
+├── tests/                   # 19 个单测
 ├── fixtures/                # 样例与 spec
 ├── LICENSE / NOTICE         # MIT（本项目）与第三方代码范围说明
 └── scripts/sync_engine.ps1  # 把引擎同步进 bundle
@@ -359,3 +359,4 @@ dsh-ptforge/
 上游仓库未提供 LICENSE 文件；`LICENSE` 里的 MIT 只覆盖本项目自己写的代码，vendored 的密码学实现不在授权范围内（详见 [`NOTICE`](NOTICE)）。如果你要商业分发或换许可证，请先用有明确授权的替代实现替换 `ptcrypto/`，或联系上游作者取得许可。
 
 本项目与 Cisco 无关，Packet Tracer 是其商标；这里使用的 `.pkt` 容器格式与 IOS 命令语法均为未公开接口，仅用于教学/研究场景的互操作。
+

@@ -7,26 +7,34 @@ can actually run what we are about to write.
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 from .ptcrypto import ptfile
 
-__all__ = ["DoctorError", "SUPPORTED_PREFIX", "environment", "verify_file"]
+__all__ = ["DoctorError", "SUPPORTED_PREFIX", "environment", "verify_file", "packet_tracer_path"]
 
 SUPPORTED_PREFIX = "8.1."
-PT_EXE = Path(r"D:\Cisco Packet Tracer 8.1.1\bin\PacketTracer.exe")
+DEFAULT_PT_EXE = Path(r"D:\Cisco Packet Tracer 8.1.1\bin\PacketTracer.exe")
 
 
 class DoctorError(RuntimeError):
     """Raised when the host cannot run the requested topology."""
 
 
+def packet_tracer_path() -> Path:
+    """Packet Tracer executable, overridable with the PT_EXE environment variable."""
+    override = os.environ.get("PT_EXE", "").strip()
+    return Path(override) if override else DEFAULT_PT_EXE
+
+
 def environment() -> dict:
     issues: list[str] = []
-    exe = PT_EXE if PT_EXE.is_file() else None
+    candidate = packet_tracer_path()
+    exe = candidate if candidate.is_file() else None
     if exe is None:
         issues.append(
-            f"Packet Tracer executable not found at {PT_EXE}; install Packet Tracer "
+            f"Packet Tracer executable not found at {candidate}; install Packet Tracer "
             "8.1.1 or set PT_EXE before opening files"
         )
     pillow = True
