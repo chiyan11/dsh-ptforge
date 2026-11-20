@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 # unrelated prompt-optimization project. The import package is still `ptforge`
 # and the console scripts are still `ptforge` / `ptforge-gui`.
 name = "dsh-ptforge"
-version = "0.1.0"
+version = "0.1.1"
 description = "Declarative Cisco Packet Tracer automation: offline .pkt codec, topology builder, state assertions, and a minimal Win32 runtime."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -63,3 +63,4 @@ ptforge = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+

@@ -1,69 +1,71 @@
 # ptforge
 
-**用代码画 Cisco Packet Tracer 的图：造拓扑、配设备、做断言、出报告。**
+**Draw Cisco Packet Tracer topologies in code: build labs, configure devices, assert on them, collect report material.**
 
 [![ci](https://github.com/chiyan11/dsh-ptforge/actions/workflows/ci.yml/badge.svg)](https://github.com/chiyan11/dsh-ptforge/actions/workflows/ci.yml)
 [![pypi](https://img.shields.io/pypi/v/dsh-ptforge.svg)](https://pypi.org/project/dsh-ptforge/)
 [![python](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
+[中文文档](README.zh-CN.md)
+
 ```powershell
 pip install dsh-ptforge
-ptforge demo -o office.pkt          # 生成一份 3 设备的小实验并打印清单
+ptforge demo -o office.pkt          # generates a 3-device lab and prints a summary
 ```
 
-三行就能拿到一个 Packet Tracer 8.1 能直接打开的 `.pkt`。想从 spec 描述整张网、批量改配置、在真机窗口里跑 `show` 命令、或者把结果整理成报告，继续往下看。
+Two lines and you have a `.pkt` that Packet Tracer 8.1 opens directly. From there you can describe a whole network as JSON, patch an existing file, run `show` commands in a real PT window, or turn the result into a report.
 
 ---
 
-## 它解决什么问题
+## Why it exists
 
-Packet Tracer 没有公开 API：`PacketTracer.exe` 里没有 `PTAPI`，`plugins/` 只认 Cisco 签名的二进制，`extensions/*.pts` 是加密脚本。所以外部程序只有两条路：
+Packet Tracer ships no public API: `PacketTracer.exe` contains no `PTAPI`, `plugins/` only loads Cisco-signed binaries, and `extensions/*.pts` are encrypted scripts. So an external program has exactly two paths:
 
-| 路径 | 现实 | ptforge 的取舍 |
+| Path | Reality | What ptforge does with it |
 | --- | --- | --- |
-| 点画布、敲终端 | 能做，但依赖窗口焦点、坐标随缩放漂移、终端只认右键粘贴 | 只保留**必要**的运行时能力 |
-| 直接读写 `.pkt` | 容器是 Twofish-EAX + zlib 的 `<PACKETTRACER5>` XML | 作为主力：拓扑/连线/配置/网页/标注全在这里 |
+| Click the canvas, type in the console | Works, but depends on window focus, drifts with zoom, and the terminal only accepts clipboard paste via the context menu | Kept only for the **runtime** facts that exist nowhere else |
+| Read and write `.pkt` directly | The container is Twofish-EAX + zlib around a `<PACKETTRACER5>` XML document | The main engine: topology, links, config, web pages, annotations |
 
-一句话：**能离线证明的绝不开窗口；只有运行时才有的状态（路由表、NAT 翻译、连通性、页面内容）才走 GUI。**
+In one sentence: **anything provable offline never opens a window; only runtime state (routing tables, NAT translations, reachability, page content) goes through the GUI.**
 
-## 能做什么
+## What it can do
 
-| 你想做的事 | 用什么 |
+| What you want | What to use |
 | --- | --- |
-| 用 JSON 描述一张网并生成 `.pkt` | `pt_build` / `ptforge build` |
-| 查型号、查接口名、查空闲端口 | `pt_models` / `ptforge models` |
-| 看拓扑清单、每条链路接在哪两个口 | `pt_inspect` |
-| 改 IP、加 VLAN、改主机名、删配置 | `pt_patch` / `pt_apply` |
-| 读结构化状态（接口、静态路由、NAT、ACL） | `pt_state` |
-| 对 `.pkt` 做断言（离线 CI 也能跑） | `pt_check` |
-| 在画布上加 IP / 端口标注 | `pt_note` |
-| 改 Server-PT 的网页 | `pt_server_page` |
-| 用真 PT 窗口执行 `show` 命令并回读 | `pt_exec` / `pt_assert` |
-| ping / 打开网页 / FTP | `pt_ping` / `pt_http_get` / `pt_ftp` |
-| 生成「图 + 图注 + 表格」的报告素材 | `pt_report` |
+| Describe a network as JSON and generate a `.pkt` | `pt_build` / `ptforge build` |
+| Look up models, interface names, free ports | `pt_models` / `ptforge models` |
+| Print a topology inventory, see which port each link lands on | `pt_inspect` |
+| Change an IP, add a VLAN, rename a device, drop config | `pt_patch` / `pt_apply` |
+| Read structured state (interfaces, static routes, NAT, ACLs) | `pt_state` |
+| Assert on a `.pkt` (works in offline CI too) | `pt_check` |
+| Label the canvas with IPs and port names | `pt_note` |
+| Replace a Server-PT web page | `pt_server_page` |
+| Run `show` commands in a real PT window and read the output back | `pt_exec` / `pt_assert` |
+| ping / open a page / FTP | `pt_ping` / `pt_http_get` / `pt_ftp` |
+| Produce "figure + caption + table" report material | `pt_report` |
 
-共 18 个工具，离线 12 个、运行时 6 个。完整参数见 [docs/TOOLS.md](docs/TOOLS.md)。
+18 tools in total: 12 offline, 6 runtime. Full parameter reference: [docs/TOOLS.md](docs/TOOLS.md).
 
-## 安装
+## Install
 
-| 方式 | 适合 | 命令 |
+| Way | Good for | Command |
 | --- | --- | --- |
-| pip | 写脚本、CI、容器 | `pip install dsh-ptforge` |
-| DSH bundle | 在 DeepSeek Harness 会话里直接调工具 | `plugin_manager install_bundle target="…/packages/dsh-ptforge"` |
-| Docker | Linux 上跑离线半边 | `docker build -t ptforge:0.1.0 .` |
+| pip | scripts, CI, containers | `pip install dsh-ptforge` |
+| DSH bundle | calling the tools inside a DeepSeek Harness session | `plugin_manager install_bundle target="…/packages/dsh-ptforge"` |
+| Docker | the offline half on Linux | `docker build -t ptforge:0.1.0 .` |
 
 ```powershell
-pip install "dsh-ptforge[gui]"   # 需要 pt_exec / pt_ping / pt_http_get 时加 Pillow
+pip install "dsh-ptforge[gui]"   # adds Pillow, needed by pt_exec / pt_ping / pt_http_get
 ```
 
-- 核心引擎**零第三方依赖**，Python 3.10+ 即可。
-- 运行时工具只在 Windows 有效，且需要 Packet Tracer **8.1.x** 与一个可交互的桌面。
-- PyPI 分发名是 `dsh-ptforge`（`ptforge` 已被无关项目占用），import 名与命令仍是 `ptforge`。
+- The core engine has **zero third-party dependencies** and only needs Python 3.10+.
+- Runtime tools are Windows-only and require Packet Tracer **8.1.x** plus an interactive desktop.
+- The PyPI distribution is named `dsh-ptforge` (`ptforge` was already taken by an unrelated project); the import name and the command are still `ptforge`.
 
-## 五分钟上手
+## Quick start
 
-### 1. 写一个 spec
+### 1. Write a spec
 
 ```json
 {
@@ -84,9 +86,9 @@ pip install "dsh-ptforge[gui]"   # 需要 pt_exec / pt_ping / pt_http_get 时加
 }
 ```
 
-端口、线型、坐标都不用写：自动配空闲口、同类设备交叉线、异类直通线、自动布局。
+Ports, cable types and coordinates are optional: free ports are picked automatically, same-kind devices get a crossover cable, different kinds get a straight-through cable, and layout is automatic.
 
-### 2. 生成并检查
+### 2. Build and inspect
 
 ```powershell
 ptforge build branch.json -o branch.pkt
@@ -94,17 +96,17 @@ ptforge inspect branch.pkt
 ptforge check branch.pkt --expect '[{"device":"PC1","interface":"FastEthernet0","ip":"10.10.0.11"}]'
 ```
 
-### 3. 在 Packet Tracer 里打开
+### 3. Open it in Packet Tracer
 
 ```powershell
 ptforge open branch.pkt
 ```
 
-或者直接双击 `.pkt`。文件是 8.1.1 格式，生成后可以继续在 PT 里手改、再存回来。
+Or double-click the `.pkt`. The file is 8.1.1 format, so you can keep editing it by hand and save it back.
 
-### 4. 真机验证（可选）
+### 4. Verify at runtime (optional)
 
-先在 PT 里双击设备、打开 Desktop → Command Prompt，然后：
+In PT, double-click a device and open Desktop → Command Prompt, then:
 
 ```powershell
 ptforge-gui exec PC1 "ipconfig"
@@ -112,17 +114,17 @@ ptforge-gui ping PC1 10.10.0.12
 ptforge-gui assert R1 --checks '[{"command":"show ip route","contains":"10.10.0.0/24"}]'
 ```
 
-### 5. 出报告
+### 5. Produce a report
 
 ```powershell
-ptforge report branch.pkt -o report --title "分支网络验收"
+ptforge report branch.pkt -o report --title "Branch acceptance"
 ```
 
-得到 `report/figures/`、`report/captions.json`、`report/report.md`。
+You get `report/figures/`, `report/captions.json` and `report/report.md`.
 
-## 三种调用方式
+## Three ways to call it
 
-**命令行**（脚本、CI、容器）
+**Command line** (scripts, CI, containers)
 
 ```powershell
 ptforge build lab.json -o lab.pkt
@@ -130,7 +132,7 @@ ptforge state lab.pkt --device R1
 ptforge patch lab.pkt --ops '[{"op":"set_ipv4","device":"PC1","port":"FastEthernet0","address":"10.10.0.21"}]'
 ```
 
-**Python API**（想嵌进自己的工具链）
+**Python API** (embed it in your own tooling)
 
 ```python
 from ptforge import spec, state, report
@@ -142,58 +144,57 @@ print(result["ok"], result["results"])
 report.build_report("lab.pkt", "report")
 ```
 
-完整签名与返回结构：[docs/API.md](docs/API.md)。
+Full signatures and return shapes: [docs/API.md](docs/API.md).
 
-**DSH 工具**（在 DeepSeek Harness 会话里让 AI 直接调）
+**DSH tools** (let an AI call it inside a DeepSeek Harness session)
 
 ```
 pt_build(spec={...}, open=true)
 pt_assert(device="R1", checks=[{"command": "show ip route", "contains": "O 10.10.0.0/24"}])
 ```
 
-## 示例
+## Examples
 
-[`examples/`](examples) 里有可直接运行的脚本：
+[`examples/`](examples) contains runnable scripts:
 
-| 脚本 | 演示 |
+| Script | Shows |
 | --- | --- |
-| `01_build_and_check.py` | spec → `.pkt` → 结构化状态 → 断言 |
-| `02_patch_and_state.py` | 增量改 IP / 改主机名，再读回状态 |
-| `03_report.py` | 生成报告素材并打印摘要 |
+| `01_build_and_check.py` | spec → `.pkt` → structured state → assertions |
+| `02_patch_and_state.py` | incremental edit of IP / hostname, then read state back |
+| `03_report.py` | generate report material and print a summary |
 
 ```powershell
 python examples/01_build_and_check.py
 ```
 
-## 文档
+## Documentation
 
-| 文档 | 内容 |
+| Doc | Content |
 | --- | --- |
-| [docs/QUICKSTART.md](docs/QUICKSTART.md) | 从零到第一个可验收实验的完整走查 |
-| [docs/API.md](docs/API.md) | Python API：签名、返回结构、异常 |
-| [docs/TOOLS.md](docs/TOOLS.md) | 18 个 DSH 工具的速查表 |
+| [docs/QUICKSTART.md](docs/QUICKSTART.md) | End-to-end walkthrough from zero to a verified lab |
+| [docs/API.md](docs/API.md) | Python API: signatures, return shapes, exceptions |
+| [docs/TOOLS.md](docs/TOOLS.md) | Cheat sheet for the 18 DSH tools |
+| [README.zh-CN.md](README.zh-CN.md) | Chinese README |
 
-## 已知边界
+## Known limits
 
-1. **没有官方 API**：运行时能力建立在窗口自动化上，需要 PT 窗口可见、可交互、能被置前。
-2. **终端只回读可见区域**：超长输出会滚出屏幕；长会话会保留过程中最长的一次快照。
-3. **同名设备歧义**：多个 PT 实例存在同名设备时，先关闭重复实例或改名。
-4. **只保证 8.1.x**：其他版本容器参数可能不同，`pt_doctor` 会先检查文件版本。
-5. **界面坐标有版本差异**：不同 PT 版本/缩放比例下，设备窗口里的相对坐标可能需要微调。
+1. **No official API**: runtime capabilities are built on window automation, so PT must be visible, interactive and brought to the foreground.
+2. **The console can only copy what is visible**: very long output scrolls away; long sessions keep the longest snapshot captured during the run.
+3. **Same-name devices are ambiguous**: if two PT instances each have a `PC0`, close the duplicate or rename the device.
+4. **8.1.x only**: other versions may use different container parameters; `pt_doctor` checks the file version first.
+5. **UI coordinates vary between versions**: relative coordinates inside a device window may need small adjustments for a different PT build or zoom level.
 
-## 开发
+## Development
 
 ```powershell
-python -m unittest discover -s tests     # 22 个单测，无需 Packet Tracer
-powershell -File scripts\sync_engine.ps1 # 改完引擎后同步进 DSH bundle
+python -m unittest discover -s tests     # 22 tests, no Packet Tracer needed
+powershell -File scripts\sync_engine.ps1 # after changing the engine, sync it into the DSH bundle
 ```
 
-CI（[ci.yml](.github/workflows/ci.yml)）在 Python 3.10/3.11/3.12 上跑单测与 CLI 冒烟，构建 wheel 并断言资产完整，再构建容器镜像。发布走 [publish.yml](.github/workflows/publish.yml) 的 Trusted Publishing，仓库里不存 PyPI token。
+CI ([ci.yml](.github/workflows/ci.yml)) runs the tests on Python 3.10/3.11/3.12, smokes the CLI and the examples, builds the wheel and checks the asset bank, then builds the container image. Publishing goes through [publish.yml](.github/workflows/publish.yml) with Trusted Publishing — no PyPI token is stored in the repository.
 
-## 许可
+## License
 
-本项目代码为 MIT（见 [LICENSE](LICENSE)）。`ptforge/ptcrypto/` 下的 Twofish/EAX 实现来自 [strykey/pka-decipher](https://github.com/strykey/pka-decipher)，上游没有 LICENSE，**不在 MIT 范围内**，商业分发前请替换或取得授权——细节见 [NOTICE](NOTICE)。
+The project code is MIT (see [LICENSE](LICENSE)). The Twofish/EAX implementation under `ptforge/ptcrypto/` comes from [strykey/pka-decipher](https://github.com/strykey/pka-decipher); the upstream project has no LICENSE and that code is **not** covered by MIT — replace it or obtain permission before commercial distribution, see [NOTICE](NOTICE).
 
-与 Cisco 无关；Packet Tracer 是其商标。`.pkt` 容器格式与 IOS 命令语法都是未公开接口，这里仅用于教学与研究场景的互操作。
-
-
+Not affiliated with Cisco; Packet Tracer is their trademark. The `.pkt` container format and IOS command syntax are undocumented interfaces, used here only for interoperability in teaching and research.

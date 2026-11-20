@@ -1,30 +1,32 @@
-# 快速上手
+# Quick start
 
-从零到「一个能验收的实验」，大约 10 分钟。命令都在 PowerShell 里，Python 换成对应平台即可。
+From nothing to "a lab you can verify" in about ten minutes. Commands use PowerShell; substitute your platform's Python invocation where needed.
+
+[中文版](QUICKSTART.zh-CN.md)
 
 ---
 
-## 0. 准备
+## 0. Prerequisites
 
-| 需要 | 说明 |
+| Need | Notes |
 | --- | --- |
-| Python 3.10+ | 只用离线功能时不需要 Packet Tracer |
-| Packet Tracer 8.1.x | 打开文件、跑运行时命令时需要；默认路径 `D:\Cisco Packet Tracer 8.1.1\bin\PacketTracer.exe`，可用 `PT_EXE` 改 |
-| Pillow | 只有 `pt_exec` / `pt_ping` / `pt_http_get` / `pt_ftp` 需要：`pip install "dsh-ptforge[gui]"` |
+| Python 3.10+ | Packet Tracer is not needed for the offline half |
+| Packet Tracer 8.1.x | Needed to open files and run runtime commands; default path `D:\Cisco Packet Tracer 8.1.1\bin\PacketTracer.exe`, override with `PT_EXE` |
+| Pillow | Only `pt_exec` / `pt_ping` / `pt_http_get` / `pt_ftp` need it: `pip install "dsh-ptforge[gui]"` |
 
-确认环境：
+Check the environment:
 
 ```powershell
 ptforge doctor
 ```
 
-正常输出里会有 `packet tracer: D:\...\PacketTracer.exe`。没有 PT 也能继续——离线部分不受影响，只是 `open` / `exec` 不可用。
+A healthy output contains `packet tracer: D:\...\PacketTracer.exe`. Without PT you can continue — the offline half is unaffected; only `open` / `exec` are unavailable.
 
 ---
 
-## 1. 写 spec
+## 1. Write a spec
 
-新建 `branch.json`：
+Create `branch.json`:
 
 ```json
 {
@@ -47,15 +49,15 @@ ptforge doctor
 }
 ```
 
-三个可以省的字段：
+Three fields you can omit:
 
-| 字段 | 省略后 |
+| Field | When omitted |
 | --- | --- |
-| `x` / `y` | 按角色自动布局（路由器一行、交换机一行、终端一行） |
-| `a_port` / `b_port`（链路端口） | 自动挑第一个空闲口 |
-| `cable` | 同类设备（PC-PC、路由器-路由器、交换机-交换机）用交叉线，其余直通线 |
+| `x` / `y` | Layout by role (routers on one row, switches on the next, end devices below) |
+| `a_port` / `b_port` (link ports) | The first free port is picked automatically |
+| `cable` | Same-kind devices (PC-PC, router-router, switch-switch) get a crossover cable, everything else a straight-through cable |
 
-`ipv4` 支持四种写法：
+`ipv4` accepts four forms:
 
 ```json
 "ipv4": "10.10.0.11/24,10.10.0.254"
@@ -64,7 +66,7 @@ ptforge doctor
 "ipv4": {"address": "10.10.0.11", "mask": "255.255.255.0", "gateway": "10.10.0.254"}
 ```
 
-查型号与接口名：
+Look up models and interface names:
 
 ```powershell
 ptforge models --query 2960
@@ -73,22 +75,22 @@ ptforge models --query 2911
 
 ---
 
-## 2. 生成、检查、打开
+## 2. Build, inspect, open
 
 ```powershell
 ptforge build branch.json -o branch.pkt
 ptforge inspect branch.pkt
 ```
 
-`inspect` 会打印设备、位置、接口与每条链路的两端端口名。接着做离线断言：
+`inspect` prints devices, positions, interfaces and both port names of every link. Then assert offline:
 
 ```powershell
 ptforge check branch.pkt --expect '[{"device":"R1","interface":"GigabitEthernet0/0","ip":"10.10.0.254"}]'
 ```
 
-返回 `PASS 1/1` 或逐条问题。断言支持这些键：
+It returns `PASS 1/1` or per-item problems. Supported keys:
 
-| 键 | 例子 |
+| Key | Example |
 | --- | --- |
 | `route` | `{"device":"R1","route":"172.18.20.0/24"}` |
 | `interface` + `ip` | `{"device":"R1","interface":"Gi0/0","ip":"10.10.0.254"}` |
@@ -96,24 +98,24 @@ ptforge check branch.pkt --expect '[{"device":"R1","interface":"GigabitEthernet0
 | `nat` | `{"device":"R1","nat":"inside"}` |
 | `config_contains` | `{"device":"R1","config_contains":"ip nat inside"}` |
 
-打开：
+Open it:
 
 ```powershell
 ptforge open branch.pkt
 ```
 
-> `ptforge open` 需要 PT 已安装。也可以直接双击 `.pkt`。
+> `ptforge open` requires PT to be installed. You can also just double-click the `.pkt`.
 
 ---
 
-## 3. 真机验证
+## 3. Runtime verification
 
-这一步才需要 Packet Tracer 窗口。流程固定：
+This is the only step that needs a Packet Tracer window. The flow is fixed:
 
-1. `ptforge open branch.pkt` 把文件打开并置前；
-2. 在画布上**双击设备**，打开设备窗口；
-3. PC 走 `Desktop → Command Prompt`；路由器/交换机走 `CLI` 标签页（可能需要先按一次回车）；
-4. 保持窗口打开，再执行下面的命令。
+1. `ptforge open branch.pkt` opens the file and brings it to the front;
+2. **Double-click a device** on the canvas to open its window;
+3. PCs use `Desktop → Command Prompt`; routers/switches use the `CLI` tab (press Enter once if the prompt is not ready);
+4. Keep the window open and run the commands below.
 
 ```powershell
 ptforge-gui exec R1 "show ip route"
@@ -122,23 +124,23 @@ ptforge-gui ping PC1 10.10.0.12
 ptforge-gui assert R1 --checks '[{"command":"show ip route","contains":"10.10.0.0/24"}]'
 ```
 
-几条实际约束：
+Practical constraints:
 
-- 命令通过**右键菜单 Paste** 输入（PT 终端不接受合成逐键输入），回车提交；
-- 回读靠拖选 + 右键 Copy，**只拿得到可见区域**；输出很长时把窗口拉大或分段执行；
-- 每条命令之间默认等待 1.2 s，`ping` 默认 8 s；不稳定时加 `--wait`。
+- Commands are entered through the **context-menu Paste** (the PT terminal ignores synthetic keystrokes), then submitted with Enter;
+- Output is read back with drag-select + context-menu Copy, so **only the visible area** is captured; enlarge the window or split long output;
+- The default wait between commands is 1.2 s, `ping` waits 8 s; pass `--wait` when a device is slow.
 
-浏览器取页面：
+Fetch a page in the browser:
 
 ```
-Desktop → Web Browser 打开后
+Desktop → Web Browser (open it first)
 ```
 
 ```powershell
 ptforge-gui http PC1 http://10.10.0.1
 ```
 
-FTP（Server-PT 默认账号 `cisco` / `cisco`）：
+FTP (Server-PT default account `cisco` / `cisco`):
 
 ```powershell
 ptforge-gui ftp PC1 10.10.0.2 --cmd dir
@@ -146,54 +148,54 @@ ptforge-gui ftp PC1 10.10.0.2 --cmd dir
 
 ---
 
-## 4. 改一个已经存在的实验
+## 4. Patch an existing lab
 
-不重建整包，只改变量：
+Do not rebuild the whole file — change only what you need:
 
 ```powershell
 ptforge patch branch.pkt --ops '[{"op":"set_ipv4","device":"PC1","port":"FastEthernet0","address":"10.10.0.21"}]' -o branch2.pkt
 ptforge state branch2.pkt --device PC1
 ```
 
-支持的算子：`set_ipv4`、`set_config`（追加或替换）、`rename`、`set_switchport`、`remove_config`。
+Supported ops: `set_ipv4`, `set_config` (append or replace), `rename`, `set_switchport`, `remove_config`.
 
 ---
 
-## 5. 报告素材
+## 5. Report material
 
 ```powershell
-ptforge report branch.pkt -o report --title "分支网络验收" `
-  --figure '{"path":"figures/pc1_ping.png","caption":"PC1 ping 网关 4/4"}'
+ptforge report branch.pkt -o report --title "Branch acceptance" `
+  --figure '{"path":"figures/pc1_ping.png","caption":"PC1 pings the gateway 4/4"}'
 ```
 
-产出：
+Output:
 
 ```
 report/
-├── figures/          # 你传入的截图会被复制到这里
-├── captions.json     # 图注
-└── report.md         # 设备表 + 地址表 + 链路表 + 图
+├── figures/          # screenshots you passed in are copied here
+├── captions.json     # figure captions
+└── report.md         # device table + address table + link table + figures
 ```
 
-把 `figures/*.png` 换成 `pt_exec` / `pt_ping` 的导出一并放进来即可。
+Drop the files exported by `pt_exec` / `pt_ping` into `figures/` and they become part of the report.
 
 ---
 
-## 6. 常见问题
+## 6. Troubleshooting
 
-| 现象 | 原因与处理 |
+| Symptom | Cause and fix |
 | --- | --- |
-| `Packet Tracer executable not found` | 没装或路径不同；设 `PT_EXE` 或忽略（不影响离线功能） |
-| `pt_open` 打开后标题是 `Invalid File` | 文件版本不是 8.1.x，或文件被外部工具改坏；先跑 `ptforge doctor <file>` |
-| `exec` 输出为空 | 设备窗口没打开、或控制台没获得焦点；确认窗口在桌面可见 |
-| 断言一直失败但截图里有内容 | 输出滚出了可见区域；拉大窗口或把 `show ...` 拆成多条 |
-| 多个 PT 实例同名设备 | 关掉重复实例，或给设备改名 |
-| `pt_exec` 报找不到窗口 | 设备窗口标题必须是设备名（如 `R1`），改过名要重新打开窗口 |
+| `Packet Tracer executable not found` | PT is not installed or lives elsewhere; set `PT_EXE` or ignore it (offline features still work) |
+| Title says `Invalid File` after `pt_open` | The file is not 8.1.x, or an external tool corrupted it; run `ptforge doctor <file>` |
+| `exec` returns empty output | The device window is not open, or the console does not have focus; make sure it is visible on the desktop |
+| Assertions keep failing although the screenshot shows the text | Output scrolled out of the visible area; enlarge the window or split `show ...` into several commands |
+| Two PT instances with same-name devices | Close the duplicate instance or rename the device |
+| `pt_exec` cannot find the window | The device window title must be the device name (e.g. `R1`); reopen the window after renaming |
 
 ---
 
-## 下一步
+## Next
 
-- [API.md](API.md)：把上面的能力嵌进 Python 代码
-- [TOOLS.md](TOOLS.md)：18 个 DSH 工具的完整参数
-- `examples/`：三个可直接运行的脚本
+- [API.md](API.md): embed these capabilities in Python code
+- [TOOLS.md](TOOLS.md): full parameters for the 18 DSH tools
+- `examples/`: three runnable scripts

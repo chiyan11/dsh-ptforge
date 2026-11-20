@@ -1,27 +1,29 @@
 # Python API
 
-引擎是一个普通 Python 包，可以脱离 CLI 直接调用。下面所有签名都来自当前代码，返回结构是实际形状。
+[中文版](API.zh-CN.md)
+
+The engine is a plain Python package; you can call it without the CLI. Every signature below is taken from the current code, and the return shapes are the real ones.
 
 ```python
-pip install dsh-ptforge        # import 名仍是 ptforge
+pip install dsh-ptforge        # the import name is still ptforge
 ```
 
-模块一览：
+Modules at a glance:
 
-| 模块 | 职责 |
+| Module | Responsibility |
 | --- | --- |
-| `ptforge.spec` | 解析 JSON spec、自动布局 |
-| `ptforge.build` | 组装文档（设备 + 链路），产出 `.pkt` |
-| `ptforge.ptcrypto.ptfile` | 容器编解码（Twofish-EAX + zlib） |
-| `ptforge.state` | 只读状态与断言 |
-| `ptforge.edit` | 单设备编辑（IP、配置、改名） |
-| `ptforge.patch` | 批量增量修改算子 |
-| `ptforge.notes` | 画布标注 |
-| `ptforge.web` | Server-PT 网页读写 |
-| `ptforge.report` | 报告素材 |
-| `ptforge.doctor` | 环境与文件版本检查 |
-| `ptforge.runtime` | Windows 运行时（执行命令、ping、http、ftp） |
-| `ptforge.gui` | 更底层的 Win32 原语（焦点、点击、截图、剪贴板） |
+| `ptforge.spec` | Parse a JSON spec, automatic layout |
+| `ptforge.build` | Assemble a document (devices + links), produce `.pkt` |
+| `ptforge.ptcrypto.ptfile` | Container codec (Twofish-EAX + zlib) |
+| `ptforge.state` | Read-only state and assertions |
+| `ptforge.edit` | Per-device edits (IP, config, rename) |
+| `ptforge.patch` | Batch incremental edit operators |
+| `ptforge.notes` | Canvas annotations |
+| `ptforge.web` | Read/write Server-PT web pages |
+| `ptforge.report` | Report material |
+| `ptforge.doctor` | Environment and file-version checks |
+| `ptforge.runtime` | Windows runtime (commands, ping, http, ftp) |
+| `ptforge.gui` | Lower-level Win32 primitives (focus, click, screenshot, clipboard) |
 
 ---
 
@@ -34,7 +36,7 @@ def auto_layout(devices: list[DeviceSpec], *, spacing: float = 190.0) -> None
 def build_from_spec(data: dict, out_path: str | Path) -> Path
 ```
 
-`DeviceSpec` / `LinkSpec` 是 dataclass：
+`DeviceSpec` / `LinkSpec` are dataclasses:
 
 ```python
 DeviceSpec(name, model, x=None, y=None, config=[], start_config=[],
@@ -42,7 +44,7 @@ DeviceSpec(name, model, x=None, y=None, config=[], start_config=[],
 LinkSpec(source, target, source_port=None, target_port=None, cable="straight")
 ```
 
-`parse_spec` 会校验必填字段与设备名唯一性，错误抛 `SpecError`（`ValueError` 子类），消息里带设备名。
+`parse_spec` validates required fields and unique device names; failures raise `SpecError` (a `ValueError` subclass) with the offending device name in the message.
 
 ```python
 from ptforge import spec
@@ -69,7 +71,7 @@ class TopologyBuilder:
     def save(self, path: str | Path) -> Path
 ```
 
-`DeviceHandle` 有 `name`、`model`、`ref`（`save-ref-id:N`）、`element`、`used_ports`。
+`DeviceHandle` exposes `name`, `model`, `ref` (`save-ref-id:N`), `element` and `used_ports`.
 
 ```python
 from ptforge.build import TopologyBuilder
@@ -80,14 +82,14 @@ b.add_device("2911", "R1", 200, 200,
                      "ip address 10.0.0.254 255.255.255.0"])
 b.add_device("2960-24TT", "SW1", 400, 200)
 b.add_device("PC-PT", "PC1", 200, 380, ipv4=("10.0.0.11", "255.255.255.0", "10.0.0.254"))
-b.connect("R1", "SW1")            # 端口自动挑
+b.connect("R1", "SW1")            # ports are picked automatically
 b.connect("PC1", "SW1")
 b.save("lab.pkt")
 ```
 
-- `cable=None` 时按设备类别自动选线：同类（host/host、router/router、switch/switch）交叉线，其余直通线。
-- `add_device` 会自动创建物理工作区节点；不要手工拼 `PHYSICAL`，除非你要复刻已有实验。
-- `save` 内部走 `ptfile.encode_container`，写出来就是 PT 可加载的 `.pkt`。
+- With `cable=None`, the cable family is chosen from the device kinds: same kind (host/host, router/router, switch/switch) gets a crossover, everything else a straight-through.
+- `add_device` creates the physical-workspace node for you; do not hand-build `PHYSICAL` unless you are cloning an existing lab.
+- `save` goes through `ptfile.encode_container`, so the output is a `.pkt` that PT can load.
 
 ---
 
@@ -96,8 +98,8 @@ b.save("lab.pkt")
 ```python
 def decode(path: str | Path) -> ET.Element          # .pkt -> <PACKETTRACER5>
 def encode(root: ET.Element, path: str | Path) -> Path
-def decode_container(data: bytes) -> bytes          # 容器 -> XML bytes
-def encode_container(xml: bytes) -> bytes           # XML bytes -> 容器
+def decode_container(data: bytes) -> bytes          # container -> XML bytes
+def encode_container(xml: bytes) -> bytes           # XML bytes -> container
 def looks_like_pkt(data: bytes) -> bool
 ```
 
@@ -109,7 +111,7 @@ print(root.findtext("VERSION"), len(root.findall("NETWORK/DEVICES/DEVICE")))
 ptfile.encode(root, "copy.pkt")
 ```
 
-解不开时抛 `ptfile.PacketTracerFormatError`。XML 结构与 PT 强约束（物理工作区节点、`FROM/PORT/TO/PORT` 顺序）由 `build` 模块维护，手改 XML 请优先用 `edit` / `patch`。
+A file that cannot be decoded raises `ptfile.PacketTracerFormatError`. The XML has strict PT constraints (physical-workspace nodes, the order of `FROM/PORT/TO/PORT`); prefer `edit` / `patch` over hand-editing XML.
 
 ---
 
@@ -122,7 +124,7 @@ def device_state(root: ET.Element, name: str) -> dict
 def check(root: ET.Element, expectations: list[dict]) -> dict
 ```
 
-`device_state` 返回：
+`device_state` returns:
 
 ```python
 {
@@ -138,7 +140,7 @@ def check(root: ET.Element, expectations: list[dict]) -> dict
 }
 ```
 
-`check` 返回 `{ok, results: [{device, expect, ok, evidence, problems}]}`，支持的断言键：
+`check` returns `{ok, results: [{device, expect, ok, evidence, problems}]}`. Supported assertion keys:
 
 ```python
 {"device": "R1", "route": "172.18.20.0/24"}
@@ -148,7 +150,7 @@ def check(root: ET.Element, expectations: list[dict]) -> dict
 {"device": "R1", "config_contains": "ip nat inside"}
 ```
 
-设备不存在时抛 `StateError`，消息里列出所有可用设备名。
+An unknown device raises `StateError` and the message lists all available device names.
 
 ---
 
@@ -165,18 +167,18 @@ def set_ipv4(dev, port, address, mask="255.255.255.0", gateway=None) -> dict
 def rename(dev, name) -> None
 ```
 
-`set_config(replace=False)` 会按 `interface` / `router` / `line` 段合并，而不是整段覆盖；`rename` 同时改 `NAME`、`SYS_NAME` 与 `RUNNINGCONFIG` 里的 `hostname`。
+`set_config(replace=False)` merges by `interface` / `router` / `line` section instead of overwriting the whole block; `rename` updates `NAME`, `SYS_NAME` and the `hostname` line inside `RUNNINGCONFIG`.
 
 ---
 
 ## ptforge.patch
 
 ```python
-def apply_ops(root, ops: list[dict]) -> dict        # {"ops": [被应用的算子摘要…]}
+def apply_ops(root, ops: list[dict]) -> dict        # {"ops": [summary of applied ops…]}
 def patch_file(source, ops, *, out=None) -> dict    # {"path", "bytes", "ops"}
 ```
 
-算子：
+Operators:
 
 ```python
 {"op": "set_ipv4", "device": "PC1", "port": "FastEthernet0",
@@ -188,7 +190,7 @@ def patch_file(source, ops, *, out=None) -> dict    # {"path", "bytes", "ops"}
 {"op": "remove_config", "device": "R1", "match": "ip route 0.0.0.0"}
 ```
 
-不传 `out` 时原地覆盖；建议传 `out` 保留原文件。
+Without `out` the source file is overwritten in place; pass `out` to keep the original.
 
 ---
 
@@ -201,7 +203,7 @@ def set_note_text(root, index, text) -> dict
 def remove_note(root, index) -> dict
 ```
 
-标注挂在 `PHYSICALWORKSPACE/NOTES` 下；`anchor_device` 会把标注定位到设备右上角，`dx/dy` 是相对偏移。
+Notes live under `PHYSICALWORKSPACE/NOTES`; `anchor_device` positions the note at the device's top-right corner and `dx/dy` are relative offsets.
 
 ```python
 from ptforge import notes, edit
@@ -222,7 +224,7 @@ def read_page(path, device=None, name="index.html") -> dict
 def set_page(path, html, *, device=None, name="index.html", out=None) -> dict
 ```
 
-`device=None` 时取第一个 Server-PT。页面存在 `DEVICE/FILES/FILE[NAME=http:]/FILES/FILE[NAME=index.html]/FILE_CONTENT/TEXT`。
+With `device=None` the first Server-PT is used. Pages live at `DEVICE/FILES/FILE[NAME=http:]/FILES/FILE[NAME=index.html]/FILE_CONTENT/TEXT`.
 
 ```python
 from ptforge import web
@@ -239,9 +241,9 @@ print(web.read_page("web_lab_custom.pkt")["html"])
 def build_report(pkt, out_dir, *, figures=None, title=None) -> dict
 ```
 
-`figures` 是 `[{"path": "figures/topology.png", "caption": "逻辑拓扑"}]`；不存在的文件会被跳过。返回 `{dir, report, captions, devices, figures, addresses, links}`。
+`figures` is `[{"path": "figures/topology.png", "caption": "Logical topology"}]`; missing files are skipped. Returns `{dir, report, captions, devices, figures, addresses, links}`.
 
-产出：
+Output:
 
 ```
 out_dir/
@@ -257,16 +259,16 @@ out_dir/
 ```python
 def environment() -> dict          # {"ok", "packet_tracer", "pillow", "supported_prefix", "issues"}
 def verify_file(path) -> dict      # {"ok", "path", "version", "devices", "links", "bytes", "issues"}
-def packet_tracer_path() -> Path   # 读 PT_EXE，缺省用 8.1.1 默认路径
+def packet_tracer_path() -> Path   # reads PT_EXE, defaults to the 8.1.1 install path
 ```
 
-`verify_file` 只检查文件本身（版本前缀 `8.1.`、是否有设备），不要求本机装了 PT。文件损坏时抛 `DoctorError`。
+`verify_file` only inspects the file (version prefix `8.1.`, presence of devices) and does not require PT to be installed. A corrupt file raises `DoctorError`.
 
 ---
 
-## ptforge.runtime（仅 Windows）
+## ptforge.runtime (Windows only)
 
-所有函数都要求对应的 PT 窗口已经打开；失败统一抛 `ConsoleError`。
+Every function expects the matching PT window to be open and raises `ConsoleError` on failure.
 
 ```python
 def exec_commands(device, commands, *, out=None, wait=1.2,
@@ -291,22 +293,22 @@ assert runtime.check_output("R1", [
 print(runtime.ping("PC1", "10.0.0.12"))   # {'sent','received','lost','loss_percent','ok',...}
 ```
 
-- `exec_commands` 通过右键 Paste 输入、回车提交、拖选 + 右键 Copy 回读可见区域，同时按窗口矩形截图。
-- `check_output` 的 check 支持 `command` + `contains` / `regex` / `not_contains`。
-- `http_get` 要求设备上 Web Browser 已打开（Desktop 标签页里点开），返回 `{ok, url, status, body, screenshot}` 形状的页面文本。
-- `ftp_session` 是提示符驱动的：连接、`Username:`、`Password:`、`ftp>`、每条命令、`quit`，逐步骤记录 `{step, sent, prompt, ok}`，transcript 取会话中最长的一次快照。
+- `exec_commands` inputs through the context-menu Paste, submits with Enter, reads the visible area back with drag-select + context-menu Copy, and also screenshots the window rectangle.
+- `check_output` checks support `command` plus `contains` / `regex` / `not_contains`.
+- `http_get` requires the device's Web Browser to be open (Desktop tab); it returns the page text in a `{ok, url, status, body, screenshot}` shape.
+- `ftp_session` is prompt-driven: connect, `Username:`, `Password:`, `ftp>`, each command, `quit`; every step records `{step, sent, prompt, ok}`, and the transcript is the longest snapshot captured during the session.
 
 ---
 
-## 异常速查
+## Exceptions
 
-| 异常 | 来源 |
+| Exception | Source |
 | --- | --- |
-| `SpecError` | spec 字段缺失、ipv4 形状不对 |
-| `ptfile.PacketTracerFormatError` | 不是合法容器 / 校验失败 |
-| `StateError` | 设备名不存在 |
-| `EditError` / `PatchError` | 编辑目标或算子不合法 |
-| `NoteError` / `WebError` | 标注或页面结构不匹配 |
-| `DoctorError` | 文件不可读 |
-| `ConsoleError` | 运行时窗口/回读失败（仅 Windows） |
+| `SpecError` | Missing spec field or malformed `ipv4` |
+| `ptfile.PacketTracerFormatError` | Not a valid container / authentication failed |
+| `StateError` | Unknown device name |
+| `EditError` / `PatchError` | Invalid edit target or operator |
+| `NoteError` / `WebError` | Annotation or page structure mismatch |
+| `DoctorError` | Unreadable file |
+| `ConsoleError` | Runtime window/read-back failure (Windows only) |
 
