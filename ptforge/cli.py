@@ -283,7 +283,12 @@ def cmd_doctor(args: argparse.Namespace) -> int:
     payload = {"environment": doctor.environment()}
     if args.pkt:
         payload["file"] = doctor.verify_file(args.pkt)
-    payload["ok"] = payload["environment"]["ok"] and payload.get("file", {"ok": True})["ok"]
+        # A file check answers "will Packet Tracer 8.1 load this?" — a missing
+        # local install is reported above but must not fail the check, otherwise
+        # the command is useless in CI and inside the Linux container.
+        payload["ok"] = payload["file"]["ok"]
+    else:
+        payload["ok"] = payload["environment"]["ok"]
     _emit(payload, as_json=args.json)
     if not args.json:
         env = payload["environment"]

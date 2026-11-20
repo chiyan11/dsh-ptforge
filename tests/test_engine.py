@@ -208,6 +208,28 @@ class DoctorTests(unittest.TestCase):
         self.assertEqual(report["version"], "8.1.1.0022")
         self.assertEqual(report["devices"], 1)
 
+    def test_file_check_does_not_require_packet_tracer(self) -> None:
+        import contextlib
+        import io
+        import os
+        from unittest import mock
+
+        from ptforge import cli
+
+        builder = TopologyBuilder()
+        builder.add_device("PC-PT", "PC0", 100, 100)
+        tmp = Path(__file__).with_name("_tmp")
+        tmp.mkdir(exist_ok=True)
+        path = tmp / "doctor_cli.pkt"
+        builder.save(path)
+
+        buf = io.StringIO()
+        with mock.patch.dict(os.environ, {"PT_EXE": str(tmp / "missing.exe")}):
+            with contextlib.redirect_stdout(buf):
+                code = cli.main(["doctor", str(path)])
+        self.assertEqual(code, 0, buf.getvalue())
+        self.assertIn("missing", buf.getvalue())
+
 
 class ReportTests(unittest.TestCase):
     def test_report_writes_tables_and_captions(self) -> None:
