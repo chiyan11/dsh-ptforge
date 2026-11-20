@@ -7,7 +7,7 @@
 [![python](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-[中文文档](README.zh-CN.md)
+[中文](README.zh-CN.md)
 
 ```powershell
 pip install dsh-ptforge
