@@ -9,7 +9,7 @@
 
 ```powershell
 pip install dsh-ptforge
-ptforge demo office -o office.pkt   # 生成一份 3 设备的小实验并打印清单
+ptforge demo -o office.pkt          # 生成一份 3 设备的小实验并打印清单
 ```
 
 三行就能拿到一个 Packet Tracer 8.1 能直接打开的 `.pkt`。想从 spec 描述整张网、批量改配置、在真机窗口里跑 `show` 命令、或者把结果整理成报告，继续往下看。
