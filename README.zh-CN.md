@@ -192,11 +192,18 @@ powershell -File scripts\sync_engine.ps1 # 改完引擎后同步进 DSH bundle
 
 CI（[ci.yml](.github/workflows/ci.yml)）在 Python 3.10/3.11/3.12 上跑单测与 CLI 冒烟，构建 wheel 并断言资产完整，再构建容器镜像。发布走 [publish.yml](.github/workflows/publish.yml) 的 Trusted Publishing，仓库里不存 PyPI token。
 
+## 免责声明
+
+- **与 Cisco 无关。** 本项目是独立项目。Cisco、Cisco Packet Tracer、IOS 及相关标识是 Cisco Systems, Inc. 的商标；本项目未获得 Cisco 的认可、赞助或支持。
+- **请自备正版 Packet Tracer。** 运行时工具驱动的是你本机安装、合法授权的 Cisco Packet Tracer。你需要自行遵守 Cisco 的许可条款、所在机构的规定和当地法律。本项目不绕过任何许可、认证或访问控制，也不分发 Cisco 软件或课程内容。
+- **风险自担。** 代码按 MIT 许可提供，不附带任何担保。离线操作会重写 `.pkt` 文件；运行时操作会向前台窗口注入合成的鼠标/键盘输入。请先备份实验文件、在副本上操作，优先使用可丢弃的虚拟机或快照；不要在共享机器上无人值守地运行运行时工具。
+- **只为互操作。** `.pkt` 是未公开的容器格式，IOS 命令是事实接口，本项目仅在教学与研究中用于互操作。生成的文件可能被其他版本或构建的 Packet Tracer 拒绝。
+- **禁止网络滥用。** `pt_ping`、`pt_http_get`、`pt_ftp` 只在你自己的 Packet Tracer 仿真环境内工作，不要指向你无权测试的真实基础设施。
+- **第三方代码。** 内置的 Twofish/EAX 实现有单独的来源与授权说明，见 [NOTICE](NOTICE)。
+
 ## 许可
 
 本项目代码为 MIT（见 [LICENSE](LICENSE)）。`ptforge/ptcrypto/` 下的 Twofish/EAX 实现来自 [strykey/pka-decipher](https://github.com/strykey/pka-decipher)，上游没有 LICENSE，**不在 MIT 范围内**，商业分发前请替换或取得授权——细节见 [NOTICE](NOTICE)。
-
-与 Cisco 无关；Packet Tracer 是其商标。`.pkt` 容器格式与 IOS 命令语法都是未公开接口，这里仅用于教学与研究场景的互操作。
 
 
 

@@ -26,3 +26,13 @@ original work, MIT licensed (see LICENSE).
 The `.pkt` container format and the Cisco IOS command syntax emulated here are
 undocumented/proprietary interfaces of Cisco Packet Tracer. This project is not
 affiliated with or endorsed by Cisco Systems.
+
+## Disclaimer
+
+This project is provided for interoperability, teaching and research. It ships
+no Cisco software or course content, and does not bypass licensing,
+authentication or access controls: you must supply a legitimately licensed
+Packet Tracer installation and follow its licence terms. The tools rewrite
+`.pkt` files and send synthetic input to the foreground window, so back up your
+work and prefer a disposable VM or snapshot. The software is provided "as is",
+without warranty of any kind; see the MIT licence in LICENSE for the full text.

@@ -193,8 +193,15 @@ powershell -File scripts\sync_engine.ps1 # after changing the engine, sync it in
 
 CI ([ci.yml](.github/workflows/ci.yml)) runs the tests on Python 3.10/3.11/3.12, smokes the CLI and the examples, builds the wheel and checks the asset bank, then builds the container image. Publishing goes through [publish.yml](.github/workflows/publish.yml) with Trusted Publishing — no PyPI token is stored in the repository.
 
+## Disclaimer
+
+- **Not affiliated with Cisco.** This is an independent project. Cisco, Cisco Packet Tracer, IOS and related marks are trademarks of Cisco Systems, Inc. Nothing here is endorsed, sponsored or supported by Cisco.
+- **Bring your own Packet Tracer.** The runtime tools drive a locally installed, legitimately licensed copy of Cisco Packet Tracer. You are responsible for complying with Cisco's licence terms, your institution's rules and local law. The project does not bypass licensing, authentication or access controls, and it does not redistribute Cisco software or course content.
+- **Use at your own risk.** The code is provided under the MIT Licence, without warranty of any kind. Offline operations rewrite `.pkt` files; runtime operations send synthetic mouse and keyboard input to the foreground window. Back up your labs, work on copies, and prefer a disposable VM or snapshot. Do not run the runtime tools unattended on a shared machine.
+- **Interoperability, not endorsement.** `.pkt` is an undocumented container and IOS syntax is a de facto interface; both are handled here purely for interoperability in teaching and research. Generated files may be rejected by a different Packet Tracer version or build.
+- **No network abuse.** `pt_ping`, `pt_http_get` and `pt_ftp` operate only inside your own Packet Tracer simulation. Do not point them at real infrastructure you are not authorised to test.
+- **Third-party code.** The vendored Twofish/EAX implementation has its own provenance and licensing caveat; see [NOTICE](NOTICE).
+
 ## License
 
 The project code is MIT (see [LICENSE](LICENSE)). The Twofish/EAX implementation under `ptforge/ptcrypto/` comes from [strykey/pka-decipher](https://github.com/strykey/pka-decipher); the upstream project has no LICENSE and that code is **not** covered by MIT — replace it or obtain permission before commercial distribution, see [NOTICE](NOTICE).
-
-Not affiliated with Cisco; Packet Tracer is their trademark. The `.pkt` container format and IOS command syntax are undocumented interfaces, used here only for interoperability in teaching and research.
