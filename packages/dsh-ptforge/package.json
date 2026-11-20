@@ -1,7 +1,7 @@
 {
   "name": "dsh-ptforge",
   "version": "0.1.0",
-  "description": "Cisco Packet Tracer automation for DeepSeek Harness: build, inspect and configure .pkt topologies offline (Twofish-EAX container codec + PT XML model) and open them in Packet Tracer. Exposes pt_models / pt_build / pt_inspect / pt_apply / pt_open tools.",
+  "description": "Cisco Packet Tracer automation for DeepSeek Harness: build, inspect and configure .pkt topologies offline (Twofish-EAX container codec + PT XML model) and open them in Packet Tracer. Exposes 18 pt_* tools (build / patch / state / check / notes / web / report offline; exec / assert / ping / http / ftp on a live Windows Packet Tracer).",
   "type": "module",
   "main": "index.js",
   "license": "MIT",
@@ -29,3 +29,4 @@
     "network-automation"
   ]
 }
+
