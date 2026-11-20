@@ -3,6 +3,7 @@
 **Cisco Packet Tracer 自动化引擎 · DeepSeek Harness 插件**
 
 [![ci](https://github.com/chiyan11/dsh-ptforge/actions/workflows/ci.yml/badge.svg)](https://github.com/chiyan11/dsh-ptforge/actions/workflows/ci.yml)
+[![pypi](https://img.shields.io/pypi/v/dsh-ptforge.svg)](https://pypi.org/project/dsh-ptforge/)
 [![python](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
