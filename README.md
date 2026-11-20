@@ -2,10 +2,15 @@
 
 **Cisco Packet Tracer 自动化引擎 · DeepSeek Harness 插件**
 
+[![ci](https://github.com/chiyan11/dsh-ptforge/actions/workflows/ci.yml/badge.svg)](https://github.com/chiyan11/dsh-ptforge/actions/workflows/ci.yml)
+[![python](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
+[![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 > Packet Tracer 没有公开的自动化 API，也没有可编程接口进它的 CLI 引擎。ptforge 用两条互补的路径把这件事做通：
 > **容器级离线编辑**（直接读写 `.pkt`，覆盖拓扑、连线、配置、网页、标注）+ **最小 GUI 运行时**（在真窗口里执行命令、拿到回显、做断言）。
 
-`ptforge` 提供 18 个 `pt_*` 工具，覆盖「造拓扑 → 配设备 → 离线验收 → 真机验收 → 出报告」的完整闭环。
+`ptforge` 提供 18 个 `pt_*` 工具，覆盖「造拓扑 → 配设备 → 离线验收 → 真机验收 → 出报告」的完整闭环；
+它同时是一个可 `pip install` 的纯 Python 包和一个可在 Linux 容器里跑的离线工具链。
 
 ---
 
@@ -15,6 +20,7 @@
 - [能力矩阵](#能力矩阵)
 - [架构](#架构)
 - [安装](#安装)
+- [打包与容器化](#打包与容器化)
 - [快速开始](#快速开始)
 - [工具参考](#工具参考)
 - [命令行](#命令行)
@@ -99,12 +105,30 @@ Packet Tracer 8.x 的 `PacketTracer.exe` 里没有 `PTAPI`、没有 socket 服�
 
 ### 依赖
 
-- Windows 10/11（运行时工具依赖 Win32 窗口 API）
-- Cisco Packet Tracer **8.1.x**（文件版本需 `8.1.*`，`pt_doctor` 会校验）
-- DeepSeek Harness（插件宿主）
-- Python 3.10+，`lxml`、`Pillow`（DSH 自带运行时已包含）
+| 部分 | 要求 |
+| --- | --- |
+| 核心引擎（构建 / 修改 / 断言 / 报告） | Python 3.10+，**无第三方依赖** |
+| 运行时工具（`pt_exec` / `pt_ping` / `pt_http_get` / `pt_ftp` / `pt_gui`） | Windows 10/11 + Pillow，且桌面可交互 |
+| Packet Tracer 本体 | **8.1.x**（`pt_doctor` 会校验文件版本；运行时工具需要 `PacketTracer.exe`） |
+| DSH 插件形态 | DeepSeek Harness（bundle 宿主） |
 
-### 以 DSH bundle 安装
+### 方式一：pip 安装
+
+```powershell
+pip install .                 # 纯离线引擎，无依赖
+pip install ".[gui]"          # 含 Pillow，可用 Windows 运行时工具
+pip install ".[gui,dev]"      # 另含 pytest
+```
+
+安装后可直接使用两个入口：
+
+```powershell
+ptforge doctor
+ptforge build lab.json -o lab.pkt
+ptforge-gui exec R1 "show ip route"
+```
+
+### 方式二：以 DSH bundle 安装
 
 ```powershell
 # 在 DSH 会话中
@@ -113,14 +137,80 @@ plugin_manager install_bundle target="D:\coding\daily\dsh-ptforge\packages\dsh-p
 
 安装后 18 个 `pt_*` 工具会出现在工具列表里。插件把引擎副本打进包内，运行时不依赖仓库目录。
 
-### 从源码使用
+### 方式三：容器（仅离线引擎）
+
+```bash
+docker build -t ptforge:0.1.0 .
+docker run --rm -v "$PWD:/work" ptforge:0.1.0 build lab.json -o lab.pkt
+```
+
+容器只包含离线引擎：Packet Tracer 是 Windows GUI 程序，`pt_exec` 这类运行时工具无法在 Linux 容器内工作（调用会给出明确错误）。
+
+### 从源码调试
 
 ```powershell
 cd D:\coding\daily\dsh-ptforge
 $env:PYTHONPATH = (Get-Location).Path
 python -m ptforge doctor
 python -m ptforge models --query 2960
+python -m unittest discover -s tests
 ```
+
+---
+
+## 打包与容器化
+
+### Python 包
+
+`pyproject.toml` 使用 setuptools 后端，包数据随 wheel 一起发布（8.1.1 骨架、80 个设备模板、端口命名表，约 2.7 MB）：
+
+```
+ptforge/assets/skeleton_8.1.1.xml
+ptforge/assets/templates/*.xml
+ptforge/assets/port_names.json
+```
+
+构建与检查：
+
+```powershell
+python -m pip install build
+python -m build                     # dist/*.whl + *.tar.gz
+python -m twine check dist/*        # 元数据校验
+```
+
+两个 console script 由 `[project.scripts]` 提供：`ptforge`（引擎 CLI）与 `ptforge-gui`（Win32 运行时 CLI）。版本号在 `pyproject.toml` 与 `ptforge/__init__.py` 两处维护。
+
+### Docker 镜像
+
+```bash
+docker build -t ptforge:0.1.0 .
+docker run --rm -v "$PWD:/work" ptforge:0.1.0 --help
+docker run --rm -v "$PWD:/work" ptforge:0.1.0 build lab.json -o lab.pkt
+docker run --rm -v "$PWD:/work" ptforge:0.1.0 inspect lab.pkt
+```
+
+设计要点：
+
+- 基于 `python:3.12-slim`，以非 root 用户（uid 10001）运行，工作目录固定为 `/work`。
+- 只 `COPY pyproject.toml README.md LICENSE ptforge/`，`.dockerignore` 排除测试、fixtures、bundle 与截图，镜像层保持最小。
+- 入口为 `ptforge`，默认 `--help`；卷挂载当前目录即可读写 `.pkt`。
+- 镜像内**不包含**运行时能力：`pt_exec`、`pt_ping`、`pt_http_get`、`pt_ftp`、`pt_gui` 依赖真实 Windows 窗口，容器内调用会直接报错而不是假装成功。
+
+`docker-compose.yml` 提供了等价的一行式调用：
+
+```bash
+docker compose run --rm ptforge build lab.json -o lab.pkt
+```
+
+### CI
+
+`.github/workflows/ci.yml` 在每次 push / PR 时执行三个 job：
+
+| job | 内容 |
+| --- | --- |
+| `test` | Python 3.10 / 3.11 / 3.12 矩阵，跑 18 个单测 + `build → inspect → doctor → report` 冒烟 |
+| `package` | 构建 wheel/sdist，并断言 wheel 内含骨架与 ≥80 个模板，产物作为 artifact 上传 |
+| `docker` | 构建镜像并执行 `--help` |
 
 ---
 
@@ -208,7 +298,7 @@ python -m ptforge report office_lan.pkt -o report --title "实验室验收报告
 ## 验收与测试
 
 ```powershell
-python -m unittest discover -s tests     # 16 tests, OK
+python -m unittest discover -s tests     # 18 tests, OK
 ```
 
 | 场景 | 结果 |
@@ -237,6 +327,10 @@ python -m unittest discover -s tests     # 16 tests, OK
 
 ```
 dsh-ptforge/
+├── pyproject.toml           # 打包元数据、入口点、包数据
+├── Dockerfile               # 离线引擎镜像（非 root、/work 卷）
+├── docker-compose.yml       # 一行式容器调用
+├── .github/workflows/ci.yml # 测试 / 打包 / 镜像 三条流水线
 ├── ptforge/                 # 引擎（可独立作为 Python 包使用）
 │   ├── ptcrypto/            # Twofish / CMAC / CTR / EAX / 容器格式
 │   ├── assets/              # 8.1.1 骨架、80 个设备模板、端口命名表
@@ -250,8 +344,9 @@ dsh-ptforge/
 │   └── cli.py / guitool.py  # 命令行入口
 ├── packages/dsh-ptforge/    # DSH bundle（含引擎副本）
 ├── docs/TOOLS.md            # 18 个工具速查表
-├── tests/                   # 16 个单测
+├── tests/                   # 18 个单测
 ├── fixtures/                # 样例与 spec
+├── LICENSE / NOTICE         # MIT（本项目）与第三方代码范围说明
 └── scripts/sync_engine.ps1  # 把引擎同步进 bundle
 ```
 
@@ -261,4 +356,6 @@ dsh-ptforge/
 
 `ptforge/ptcrypto/twofish.py` 来自 [strykey/pka-decipher](https://github.com/strykey/pka-decipher)，其内部保留了原始 Twofish 实现的版权声明（Gladman / Paulo S. L. M. Barreto）。`ptcrypto/` 下的 CMAC/CTR/EAX 与容器格式实现同样源自该仓库。
 
-上游仓库未提供 LICENSE 文件；如果你要分发衍生版本，请先确认上游授权。本项目自身的代码可视为与研究/学习用途的参考实现。
+上游仓库未提供 LICENSE 文件；`LICENSE` 里的 MIT 只覆盖本项目自己写的代码，vendored 的密码学实现不在授权范围内（详见 [`NOTICE`](NOTICE)）。如果你要商业分发或换许可证，请先用有明确授权的替代实现替换 `ptcrypto/`，或联系上游作者取得许可。
+
+本项目与 Cisco 无关，Packet Tracer 是其商标；这里使用的 `.pkt` 容器格式与 IOS 命令语法均为未公开接口，仅用于教学/研究场景的互操作。

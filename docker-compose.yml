@@ -1,0 +1,9 @@
+services:
+  ptforge:
+    build: .
+    image: ptforge:0.1.0
+    working_dir: /work
+    volumes:
+      - ./work:/work
+    # `docker compose run --rm ptforge build lab.json -o lab.pkt`
+    command: ["--help"]

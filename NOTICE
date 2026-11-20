@@ -1,0 +1,28 @@
+# Third-party notices
+
+## Twofish / CMAC / CTR / EAX
+
+Files under `ptforge/ptcrypto/`:
+
+- `twofish.py` — Twofish reference implementation by Paulo Barreto and
+  Vincent Rijmen, as distributed by pshvatov/pka-decipher. The file carries the
+  original Gladman-style copyright header; keep it intact when redistributing.
+- `cmac.py`, `ctr.py`, `eax.py`, `pt_crypto.py` — thin helpers derived from the
+  same upstream repository.
+
+The upstream repository (https://github.com/pshvatov/pka-decipher) does not ship
+a top-level LICENSE file at the time of writing. That means the cryptographic
+code is redistributed **without an explicit license grant**. The MIT license in
+this repository covers only the code authored for ptforge. If you intend to
+redistribute ptforge commercially or under a different license, replace the
+vendored cipher with a properly licensed implementation (for example the
+`twofish` package on PyPI) or obtain permission from the upstream authors.
+
+## Everything else
+
+`ptforge/`, `packages/dsh-ptforge/`, `docs/`, `tests/` and `scripts/` are
+original work, MIT licensed (see LICENSE).
+
+The `.pkt` container format and the Cisco IOS command syntax emulated here are
+undocumented/proprietary interfaces of Cisco Packet Tracer. This project is not
+affiliated with or endorsed by Cisco Systems.

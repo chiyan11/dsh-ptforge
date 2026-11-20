@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ipaddress
 import json
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -66,11 +67,19 @@ def _parse_ipv4(value: Any, device: str) -> tuple[str, str, str] | None:
             "or 'address/prefix [gateway]'"
         )
     if isinstance(value, (list, tuple)):
+        if len(value) == 1:
+            # Allow ["192.168.10.1/24"] and ["192.168.10.1 255.255.255.0 gw"]:
+            # a one-item list is just the string form spelled inside brackets.
+            return _parse_ipv4(value[0], device)
         if len(value) == 2:
-            return str(value[0]), str(value[1]), ""
+            head = str(value[0])
+            if "/" in head:
+                # ["10.0.0.1/24", "10.0.0.254"] means address + gateway.
+                return _parse_ipv4(f"{head} {value[1]}", device)
+            return head, str(value[1]), ""
         if len(value) == 3:
             return str(value[0]), str(value[1]), str(value[2])
-        raise SpecError(f"{device}: ipv4 list needs 2 or 3 items, got {len(value)}")
+        raise SpecError(f"{device}: ipv4 list needs 1, 2 or 3 items, got {len(value)}")
     raise SpecError(f"{device}: unsupported ipv4 value {value!r}")
 
 

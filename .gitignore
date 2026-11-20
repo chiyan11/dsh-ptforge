@@ -20,3 +20,8 @@ fixtures/**/*.pkt
 
 tests/_tmp/
 
+# 构建产物
+build/
+dist/
+*.egg-info/
+

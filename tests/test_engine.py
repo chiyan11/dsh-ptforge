@@ -268,3 +268,38 @@ class WebTests(unittest.TestCase):
         self.assertEqual(result["device"], "S1")
         self.assertEqual(web.read_page(str(path), device="S1")["html"], "<h1>hi</h1>")
 
+
+class SpecTests(unittest.TestCase):
+    def test_ipv4_forms(self) -> None:
+        from ptforge import spec
+
+        cases = [
+            (["192.168.10.1/24"], ("192.168.10.1", "255.255.255.0", "")),
+            (
+                ["192.168.10.1/24", "192.168.10.254"],
+                ("192.168.10.1", "255.255.255.0", "192.168.10.254"),
+            ),
+            (["192.168.10.1", "255.255.255.0"], ("192.168.10.1", "255.255.255.0", "")),
+            (
+                "192.168.10.1 255.255.255.0 192.168.10.254",
+                ("192.168.10.1", "255.255.255.0", "192.168.10.254"),
+            ),
+            (
+                {"address": "192.168.10.1/24", "gateway": "192.168.10.254"},
+                ("192.168.10.1", "255.255.255.0", "192.168.10.254"),
+            ),
+        ]
+        for value, expected in cases:
+            self.assertEqual(spec._parse_ipv4(value, "D"), expected, value)
+
+    def test_single_item_list_builds(self) -> None:
+        from ptforge import spec
+
+        data = {
+            "name": "t",
+            "devices": [{"name": "PC0", "model": "PC-PT", "ipv4": ["10.0.0.10/24"]}],
+            "links": [],
+        }
+        devices, _ = spec.parse_spec(data)
+        self.assertEqual(devices[0].ipv4, ("10.0.0.10", "255.255.255.0", ""))
+

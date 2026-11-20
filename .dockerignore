@@ -1,0 +1,17 @@
+.git
+.github
+.gitignore
+.venv
+__pycache__
+**/__pycache__
+*.pyc
+node_modules
+packages
+docs
+fixtures
+tests
+tools
+scripts
+.dsh-pilot
+**/*.pkt
+**/*.png
