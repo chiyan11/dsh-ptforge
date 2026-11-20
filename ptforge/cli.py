@@ -253,11 +253,19 @@ def cmd_state(args: argparse.Namespace) -> int:
     return 0
 
 
+def _json_argument(value: str) -> object:
+    """Accept either inline JSON or a path to a JSON file."""
+    text = value.strip()
+    if text.startswith(("[", "{")):
+        return json.loads(text)
+    return json.loads(Path(value).read_text(encoding="utf-8"))
+
+
 def cmd_check(args: argparse.Namespace) -> int:
     from . import state
 
     root = state.load(args.pkt)
-    expectations = json.loads(Path(args.expect).read_text(encoding="utf-8"))
+    expectations = _json_argument(args.expect)
     if isinstance(expectations, dict):
         expectations = expectations.get("expect", [])
     report = state.check(root, expectations)
@@ -274,7 +282,7 @@ def cmd_check(args: argparse.Namespace) -> int:
 def cmd_patch(args: argparse.Namespace) -> int:
     from . import patch
 
-    ops = json.loads(Path(args.ops).read_text(encoding="utf-8"))
+    ops = _json_argument(args.ops)
     if isinstance(ops, dict):
         ops = ops.get("ops", [])
     summary = patch.patch_file(args.pkt, ops, out=args.out)
@@ -320,7 +328,7 @@ def cmd_report(args: argparse.Namespace) -> int:
 
     figures = []
     if args.figure:
-        figures = json.loads(Path(args.figure).read_text(encoding="utf-8"))
+        figures = _json_argument(args.figure)
     summary = report.build_report(args.pkt, args.out, figures=figures, title=args.title)
     _emit(summary, as_json=args.json)
     if not args.json:
@@ -513,6 +521,7 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
 
 
 

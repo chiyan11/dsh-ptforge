@@ -6,7 +6,10 @@ Run:  python examples/01_build_and_check.py
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from ptforge import spec, state
 

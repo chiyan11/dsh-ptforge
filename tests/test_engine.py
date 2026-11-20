@@ -361,3 +361,18 @@ class ModelsCliTests(unittest.TestCase):
         out = buf.getvalue()
         self.assertIn("2960-24TT", out)
         self.assertNotIn("2911", out)
+
+
+class JsonArgumentTests(unittest.TestCase):
+    def test_inline_json_and_file_path_are_both_accepted(self) -> None:
+        from ptforge import cli
+
+        inline = cli._json_argument('[{"device": "PC1"}]')
+        self.assertEqual(inline, [{"device": "PC1"}])
+
+        tmp = Path(__file__).with_name("_tmp")
+        tmp.mkdir(exist_ok=True)
+        path = tmp / "ops.json"
+        path.write_text('{"ops": [{"op": "rename"}]}', encoding="utf-8")
+        from_file = cli._json_argument(str(path))
+        self.assertEqual(from_file, {"ops": [{"op": "rename"}]})
